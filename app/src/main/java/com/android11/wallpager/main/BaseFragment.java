@@ -22,7 +22,7 @@ public class BaseFragment extends Fragment implements IBaseView {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        spu = new SharePreferenceUtil(getActivity(), "wall");
+        spu = Tools.getSpu(getActivity());
     }
 
 

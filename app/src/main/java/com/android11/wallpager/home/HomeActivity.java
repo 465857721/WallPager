@@ -19,6 +19,7 @@ import com.android11.wallpager.about.AboutActivity;
 import com.android11.wallpager.home.adapter.HomeFragmentPagerAdapter;
 import com.android11.wallpager.home.fragment.PhotosFragment;
 import com.android11.wallpager.main.BaseActivity;
+import com.android11.wallpager.setting.SettingActivity;
 import com.android11.wallpager.utils.Const;
 import com.android11.wallpager.utils.OrderType;
 import com.android11.wallpager.utils.Tools;
@@ -46,7 +47,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         ButterKnife.bind(this);
         initView();
     }
-
 
     @Override
     public void onBackPressed() {
@@ -122,6 +122,10 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id) {
+            case R.id.nav_setting:
+                Intent setIntent = new Intent(this, SettingActivity.class);
+                startActivity(setIntent);
+                break;
             case R.id.nav_about:
                 Intent aboutIntent = new Intent(this, AboutActivity.class);
                 startActivity(aboutIntent);

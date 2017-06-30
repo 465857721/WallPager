@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.android11.wallpager.R;
 import com.android11.wallpager.home.bean.PhotoListBean;
+import com.android11.wallpager.utils.SharePreferenceUtil;
+import com.android11.wallpager.utils.Tools;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -54,8 +56,15 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final OrderViewHolder oholder = (OrderViewHolder) holder;
         PhotoListBean bean = list.get(position);
-        Glide.with(mActivity).load(bean.getUrls().getRegular()).centerCrop().into(oholder.ivphoto);
-        oholder.tvname.setText(bean.getUser().getName());
+        SharePreferenceUtil spu = Tools.getSpu(mActivity);
+        // 是否高清模式
+        if(spu.getHighQulit()){
+            Glide.with(mActivity).load(bean.getUrls().getRegular()).centerCrop().into(oholder.ivphoto);
+        }else{
+            Glide.with(mActivity).load(bean.getUrls().getSmall()).centerCrop().into(oholder.ivphoto);
+        }
+
+         oholder.tvname.setText(bean.getUser().getName());
         if (TextUtils.isEmpty(bean.getDescription())) {
             oholder.tvdes.setVisibility(View.GONE);
         } else {

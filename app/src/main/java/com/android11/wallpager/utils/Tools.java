@@ -41,7 +41,7 @@ public class Tools {
     private static Dialog loadingDialog;
 
     public static SharePreferenceUtil getSpu(Context mContext) {
-        return new SharePreferenceUtil(mContext.getApplicationContext(), "battery");
+        return new SharePreferenceUtil(mContext.getApplicationContext(), "wall");
     }
 
     public static int getStatusBarHeight(Context mContext) {
