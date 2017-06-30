@@ -1,6 +1,7 @@
 package com.android11.wallpager.home;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -107,10 +108,10 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.about) {
-            Tools.toastInBottom(this,"尽请期待");
-            return true;
+        switch (id) {
+            case R.id.about:
+                Tools.toastInBottom(this, "尽请期待");
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -120,13 +121,33 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        switch (id) {
+            case R.id.nav_about:
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
+                break;
+            case R.id.nav_send:
+                joinQQGroup();
+                break;
+            case R.id.nav_comment:
+                Tools.goMarket(this);
+                break;
 
-        if (id == R.id.about) {
-            Intent aboutIntent = new Intent(this, AboutActivity.class);
-            startActivity(aboutIntent);
         }
-
         return true;
+    }
+
+    public boolean joinQQGroup() {
+        Intent intent = new Intent();
+        intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + "a7kpL7ND9wz0t8XiqUt7"));
+        // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        try {
+            startActivity(intent);
+            return true;
+        } catch (Exception e) {
+            Tools.toastInBottom(this, "未安装手Q或安装的版本不支持");
+            return false;
+        }
     }
 
 }

@@ -1,33 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-
     <item
-        android:id="@+id/about"
-        android:icon="@drawable/ic_nav_about"
-        android:title="关于"/>
-    <item
-        android:id="@+id/nav_gallery"
-        android:icon="@drawable/ic_menu_gallery"
-        android:title="Gallery"/>
-    <item
-        android:id="@+id/nav_slideshow"
-        android:icon="@drawable/ic_menu_slideshow"
-        android:title="Slideshow"/>
-    <item
-        android:id="@+id/nav_manage"
-        android:icon="@drawable/ic_menu_manage"
-        android:title="Tools"/>
-
-
-    <item
-        android:id="@+id/nav_share"
-        android:icon="@drawable/ic_menu_share"
-        android:title="Share"/>
+        android:id="@+id/nav_comment"
+        android:icon="@drawable/ic_nav_comment"
+        android:title="评分"/>
     <item
         android:id="@+id/nav_send"
-        android:icon="@drawable/ic_menu_send"
-        android:title="Send"/>
+        android:icon="@drawable/ic_nav_send"
+        android:title="反馈"/>
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_nav_about"
+        android:title="关于"/>
 
 
 </menu>

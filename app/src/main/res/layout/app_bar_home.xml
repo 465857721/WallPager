@@ -18,10 +18,11 @@
         app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
+            android:fitsSystemWindows="true"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/color_bg"
             app:titleTextColor="@color/icon_gray"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
