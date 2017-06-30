@@ -1,5 +1,6 @@
 package com.android11.wallpager.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -9,14 +10,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.android11.wallpager.R;
+import com.android11.wallpager.about.AboutActivity;
 import com.android11.wallpager.home.adapter.HomeFragmentPagerAdapter;
 import com.android11.wallpager.home.fragment.PhotosFragment;
 import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.utils.Const;
 import com.android11.wallpager.utils.OrderType;
+import com.android11.wallpager.utils.Tools;
 import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
@@ -41,7 +45,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         ButterKnife.bind(this);
         initView();
     }
-
 
 
     @Override
@@ -91,6 +94,25 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 getSupportFragmentManager(), list_fragment, list_title));
 
         tab.setupWithViewPager(vp);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.about) {
+            Tools.toastInBottom(this,"尽请期待");
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -99,22 +121,12 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.about) {
+            Intent aboutIntent = new Intent(this, AboutActivity.class);
+            startActivity(aboutIntent);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/color_bg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.android11.wallpager.home.HomeActivity"
     tools:showIn="@layout/app_bar_home">
@@ -21,6 +22,7 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp"
+        android:background="@color/color_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

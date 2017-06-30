@@ -49,8 +49,6 @@ public class PhotosFragment extends BaseFragment implements IGetPhotosView, Swip
         listview.setRefreshing(true);
 
 
-
-
         getPhotosPresenter.getPhoto(OperaType.REFRESH);
         return v;
     }
@@ -79,11 +77,11 @@ public class PhotosFragment extends BaseFragment implements IGetPhotosView, Swip
     }
 
     @Override
-    public void onGetPhotes(ArrayList<PhotoListBean> rlist,int type) {
-        if(listview==null)
+    public void onGetPhotes(ArrayList<PhotoListBean> rlist, int type) {
+        if (listview == null)
             return;
 
-        if(type==OperaType.REFRESH){
+        if (type == OperaType.REFRESH) {
             list.clear();
             listview.setupMoreListener(this, 1);
         }
@@ -104,6 +102,8 @@ public class PhotosFragment extends BaseFragment implements IGetPhotosView, Swip
     @Override
     public void OnError(String s) {
         super.OnError(s);
+        if (listview == null)
+            return;
         listview.setLoadingMore(false);
         listview.setRefreshing(false);
     }
