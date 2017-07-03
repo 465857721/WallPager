@@ -1,6 +1,7 @@
 package com.android11.wallpager.pic;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +14,6 @@ import com.android11.wallpager.pic.bean.PicDetailBean;
 import com.android11.wallpager.pic.iviews.IGetPhotoDetailView;
 import com.android11.wallpager.pic.presenter.GetPhotoDetailPresenter;
 import com.bumptech.glide.Glide;
-import com.jaeger.library.StatusBarUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,15 +30,20 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 
     private GetPhotoDetailPresenter getPhotoDetailPresenter;
     private PicDetailBean bean;
+    private Context mContext;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picdetail);
         ButterKnife.bind(this);
+        mContext = this;
         initViw();
-        getPhotoDetailPresenter = new GetPhotoDetailPresenter(this);
-        getPhotoDetailPresenter.getPhoto();
+//        getPhotoDetailPresenter = new GetPhotoDetailPresenter(this);
+//        getPhotoDetailPresenter.getPhoto();
+
+        Glide.with(this).load(getIntent().getStringExtra("url")).centerCrop().into(ivTop);
     }
 
     @Override
@@ -47,9 +52,9 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     }
 
     private void initViw() {
-        mToolbar.setNavigationIcon(R.drawable.icon_back);
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,10 +64,6 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 
     }
 
-    @Override
-    protected void setStatusBar() {
-//        StatusBarUtil.setTranslucentForImageView(this, 50, ivTop);
-    }
 
     @Override
     public String getPhotoID() {

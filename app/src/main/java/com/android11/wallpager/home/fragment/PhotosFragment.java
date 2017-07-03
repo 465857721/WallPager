@@ -129,6 +129,7 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
     public void onItemClick(View view, int position) {
         Intent godetail = new Intent(getActivity(), PicDetailActivity.class);
         godetail.putExtra("id",list.get(position).getId());
+        godetail.putExtra("url",list.get(position).getUrls().getRegular());
         startActivity(godetail);
     }
 }
