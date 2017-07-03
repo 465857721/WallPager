@@ -6,13 +6,15 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import com.android11.wallpager.R;
+import com.android11.wallpager.main.iviews.IBaseView;
+import com.android11.wallpager.utils.Const;
 import com.android11.wallpager.utils.SharePreferenceUtil;
 import com.android11.wallpager.utils.Tools;
 import com.jaeger.library.StatusBarUtil;
 import com.umeng.analytics.MobclickAgent;
 
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements IBaseView {
     public SharePreferenceUtil spu;
 
     @Override
@@ -63,5 +65,14 @@ public class BaseActivity extends AppCompatActivity {
         MobclickAgent.onResume(this);
     }
 
+    @Override
+    public void OnError(String s) {
+        Tools.toastInBottom(this, s);
+    }
+
+    @Override
+    public String getClientId() {
+        return Const.CLIENT_ID;
+    }
 
 }

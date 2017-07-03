@@ -58,20 +58,27 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
         PhotoListBean bean = list.get(position);
         SharePreferenceUtil spu = Tools.getSpu(mActivity);
         // 是否高清模式
-        if(spu.getHighQulit()){
+        if (spu.getHighQulit()) {
             Glide.with(mActivity).load(bean.getUrls().getRegular()).centerCrop().into(oholder.ivphoto);
-        }else{
+        } else {
             Glide.with(mActivity).load(bean.getUrls().getSmall()).centerCrop().into(oholder.ivphoto);
         }
 
-         oholder.tvname.setText(bean.getUser().getName());
+        oholder.tvname.setText(bean.getUser().getName());
         if (TextUtils.isEmpty(bean.getDescription())) {
             oholder.tvdes.setVisibility(View.GONE);
         } else {
             oholder.tvdes.setVisibility(View.VISIBLE);
             oholder.tvdes.setText(bean.getDescription());
         }
-
+        if (mOnItemClickLitener != null) {
+            oholder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickLitener.onItemClick(v, position);
+                }
+            });
+        }
     }
 
     @Override

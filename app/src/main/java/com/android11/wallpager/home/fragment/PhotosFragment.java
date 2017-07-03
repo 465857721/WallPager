@@ -1,5 +1,6 @@
 package com.android11.wallpager.home.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import com.android11.wallpager.home.bean.PhotoListBean;
 import com.android11.wallpager.home.iviews.IGetPhotosView;
 import com.android11.wallpager.home.presenter.GetPhotosPresenter;
 import com.android11.wallpager.main.BaseFragment;
+import com.android11.wallpager.pic.PicDetailActivity;
 import com.android11.wallpager.utils.OperaType;
 import com.android11.wallpager.utils.OrderType;
 import com.malinskiy.superrecyclerview.OnMoreListener;
@@ -24,7 +26,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class PhotosFragment extends BaseFragment implements IGetPhotosView, SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
+public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnItemClickLitener,IGetPhotosView, SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
     @Bind(R.id.listview)
     SuperRecyclerView listview;
     private int page = 1;
@@ -42,6 +44,7 @@ public class PhotosFragment extends BaseFragment implements IGetPhotosView, Swip
 
         ButterKnife.bind(this, v);
         photoListAdapter = new PhotoListAdapter(list, getActivity());
+        photoListAdapter.setOnItemClickLitener(this);
         listview.setLayoutManager(new LinearLayoutManager(getActivity()));
         listview.setAdapter(photoListAdapter);
 
@@ -120,5 +123,12 @@ public class PhotosFragment extends BaseFragment implements IGetPhotosView, Swip
         page++;
         getPhotosPresenter.getPhoto(OperaType.LOADMORE);
 
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Intent godetail = new Intent(getActivity(), PicDetailActivity.class);
+        godetail.putExtra("id",list.get(position).getId());
+        startActivity(godetail);
     }
 }
