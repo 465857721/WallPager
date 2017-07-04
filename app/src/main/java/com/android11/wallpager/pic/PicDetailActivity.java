@@ -1,10 +1,15 @@
 package com.android11.wallpager.pic;
 
 
+import android.app.WallpaperManager;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +19,13 @@ import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.pic.bean.PicDetailBean;
 import com.android11.wallpager.pic.iviews.IGetPhotoDetailView;
 import com.android11.wallpager.pic.presenter.GetPhotoDetailPresenter;
+import com.android11.wallpager.utils.Tools;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.FutureTarget;
+import com.bumptech.glide.request.target.Target;
+
+import java.io.File;
+import java.util.concurrent.ExecutionException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -62,19 +73,23 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     private GetPhotoDetailPresenter getPhotoDetailPresenter;
     private PicDetailBean bean;
     private Context mContext;
+    private Handler mHandler;
+    private String localUrl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picdetail);
+        mHandler = new Handler();
         ButterKnife.bind(this);
         mContext = this;
         initViw();
         getPhotoDetailPresenter = new GetPhotoDetailPresenter(this);
         getPhotoDetailPresenter.getPhoto();
-
+        getLocalURrl();
         Glide.with(this).load(getIntent().getStringExtra("url")).centerCrop().into(ivTop);
+
     }
 
     @Override
@@ -102,7 +117,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     }
 
     @Override
-    public void onGetPhoteDetail(PicDetailBean bean) {
+    public void onGetPhoteDetail(final PicDetailBean bean) {
         this.bean = bean;
         // 是否高清模式
 //        if (spu.getHighQulit()) {
@@ -110,7 +125,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 //        } else {
 //            Glide.with(this).load(bean.getUrls().getSmall()).centerCrop().into(ivTop);
 //        }
-        Glide.with(this).load(bean.getUser().getProfile_image().getLarge()).into(ivHead);
+        Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge()).into(ivHead);
         tvName.setText(bean.getUser().getName());
 
 
@@ -123,17 +138,74 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         tvAttrIso.setText("感光度：" + bean.getExif().getIso() + "");
         if (bean.getLocation() != null)
             tvAttrLoaction.setText("拍摄地：" + bean.getLocation().getName());
+
+
     }
 
     @OnClick({R.id.tv_load_photo, R.id.tv_share, R.id.tv_set_phone_page})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_load_photo:
+                downWallPaper();
                 break;
             case R.id.tv_share:
                 break;
             case R.id.tv_set_phone_page:
+                setWallPaper();
                 break;
         }
     }
+
+    //设置壁纸
+    public void setWallPaper() {
+        try {
+            Bitmap bitmap = BitmapFactory.decodeFile(localUrl);
+            WallpaperManager mWallManager = WallpaperManager.getInstance(this);
+            mWallManager.setBitmap(bitmap);
+            Tools.toastInBottom(this, "设置成功");
+        } catch (Exception e) {
+            Tools.toastInBottom(this, "设置失败");
+            e.printStackTrace();
+
+        }
+    }
+
+    //设置壁纸
+    public void downWallPaper() {
+        Bitmap bitmap = BitmapFactory.decodeFile(localUrl);
+        if (bitmap != null) {
+            // 在这里执行图片保存方法
+            Tools.saveImageToGallery(mContext, bitmap);
+        }
+
+    }
+
+    private void getLocalURrl() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FutureTarget<File> future = Glide.with(mContext)
+                        .load(getIntent().getStringExtra("url"))
+                        .downloadOnly(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL);
+                try {
+                    File cacheFile = future.get();
+                    localUrl = cacheFile.getAbsolutePath();
+                    Log.d("zk path = ", localUrl);
+//                    mHandler.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Bitmap bitmap = BitmapFactory.decodeFile(localUrl);
+//                            ivTop.setImageBitmap(bitmap);
+//                        }
+//                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
 }

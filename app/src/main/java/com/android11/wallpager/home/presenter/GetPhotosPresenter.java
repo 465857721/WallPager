@@ -27,7 +27,7 @@ public class GetPhotosPresenter {
     }
 
     public void getPhoto(final int type) {
-        if (iView == null)
+        if (iView == null || iView.getUrl() == null)
             return;
         OkHttpUtils
                 .get()

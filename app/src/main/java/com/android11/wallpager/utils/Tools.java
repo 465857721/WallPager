@@ -10,10 +10,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ProviderInfo;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -21,9 +23,11 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-
 import com.android11.wallpager.R;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
@@ -244,7 +248,6 @@ public class Tools {
     }
 
 
-
     public static boolean hasShortcut(Context context) {
         boolean isInstallShortcut = false;
         final ContentResolver cr = context.getContentResolver();
@@ -285,5 +288,41 @@ public class Tools {
             }
         }
         return null;
+    }
+
+    public static void saveImageToGallery(Context context, Bitmap bmp) {
+        // 首先保存图片
+        File currentFile;
+        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsoluteFile();//注意小米手机必须这样获得public绝对路径
+        String fileName = "android11/download";
+        File appDir = new File(file, fileName);
+        if (!appDir.exists()) {
+            appDir.mkdirs();
+        }
+        String fileName1 = System.currentTimeMillis() + ".jpg";
+        currentFile = new File(appDir, fileName1);
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(currentFile);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            Tools.toastInBottom(context, "保存成功");
+        } catch (Exception e) {
+            Tools.toastInBottom(context, "保存失败");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                Uri.fromFile(new File(currentFile.getPath()))));
     }
 }
