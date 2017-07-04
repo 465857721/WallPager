@@ -10,24 +10,25 @@ public class PicDetailBean {
 
 
     /**
-     * id : U8kQFsu9vzw
-     * created_at : 2017-07-01T20:59:54-04:00
-     * updated_at : 2017-07-02T22:34:29-04:00
-     * width : 4093
-     * height : 2426
-     * color : #F4EEEB
+     * id : zDFVEGflVFA
+     * created_at : 2017-07-03T06:04:52-04:00
+     * updated_at : 2017-07-03T23:04:40-04:00
+     * width : 2000
+     * height : 2437
+     * color : #16191C
      * slug : null
-     * downloads : 634
-     * likes : 84
-     * views : 11
+     * downloads : 310
+     * likes : 34
+     * views : 12852
      * liked_by_user : false
      * description : null
-     * exif : {"make":"Canon","model":"Canon EOS 5D","exposure_time":"30","aperture":null,"focal_length":null,"iso":1250}
+     * exif : {"make":"Canon","model":"Canon EOS 100D","exposure_time":"1/4000","aperture":"6.3","focal_length":"41","iso":100}
+     * location : {"title":"Lisbon, Portugal","name":"Lisbon","city":"Lisbon","country":"Portugal","position":{"latitude":38.7222524,"longitude":-9.13933659999998}}
      * current_user_collections : []
-     * urls : {"raw":"https://images.unsplash.com/photo-1498957090711-6b3b32329fba","full":"https://images.unsplash.com/photo-1498957090711-6b3b32329fba?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&s=afccb0b2b58b4730038945e71bdd086a","regular":"https://images.unsplash.com/photo-1498957090711-6b3b32329fba?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=c8932111760dbb93c733be1b3fe57d71","small":"https://images.unsplash.com/photo-1498957090711-6b3b32329fba?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&s=cb6d9c3eba023ebe7bb0fbd74d8f84de","thumb":"https://images.unsplash.com/photo-1498957090711-6b3b32329fba?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=a0c7e22e3a7b6d393da61896368202de"}
+     * urls : {"raw":"https://images.unsplash.com/photo-1499076218749-7d639231170d","full":"https://images.unsplash.com/photo-1499076218749-7d639231170d?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&s=5ffe0779cee22d430ab33eb60a40f355","regular":"https://images.unsplash.com/photo-1499076218749-7d639231170d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=ad84f7329af952a6aef2ec3e200d5ad5","small":"https://images.unsplash.com/photo-1499076218749-7d639231170d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&s=896d34e7b7f93f2507eaa4850757239c","thumb":"https://images.unsplash.com/photo-1499076218749-7d639231170d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=8f5b1b827b43c16764538aa3838826c9"}
      * categories : []
-     * links : {"self":"https://api.unsplash.com/photos/U8kQFsu9vzw","html":"http://unsplash.com/photos/U8kQFsu9vzw","download":"http://unsplash.com/photos/U8kQFsu9vzw/download","download_location":"https://api.unsplash.com/photos/U8kQFsu9vzw/download"}
-     * user : {"id":"WReBKGdTjw0","updated_at":"2017-07-02T22:34:29-04:00","username":"franciscomoreno","name":"Francisco  Moreno","first_name":"Francisco ","last_name":"Moreno","twitter_username":null,"portfolio_url":"http://www.instagram.com/sr_morenoo","bio":"","location":"Grazalema","total_likes":20,"total_photos":20,"total_collections":1,"profile_image":{"small":"https://images.unsplash.com/profile-1484175828587-c2c9c2e9b158?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=dd419f2929ab581f4fe4f5f61afe0561","medium":"https://images.unsplash.com/profile-1484175828587-c2c9c2e9b158?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=64&w=64&s=6f4cf5f524dcf86f949cf703b0fdbf10","large":"https://images.unsplash.com/profile-1484175828587-c2c9c2e9b158?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=128&w=128&s=c248982a63c9ad531b3cc828d9f7c98a"},"links":{"self":"https://api.unsplash.com/users/franciscomoreno","html":"http://unsplash.com/@franciscomoreno","photos":"https://api.unsplash.com/users/franciscomoreno/photos","likes":"https://api.unsplash.com/users/franciscomoreno/likes","portfolio":"https://api.unsplash.com/users/franciscomoreno/portfolio","following":"https://api.unsplash.com/users/franciscomoreno/following","followers":"https://api.unsplash.com/users/franciscomoreno/followers"}}
+     * links : {"self":"https://api.unsplash.com/photos/zDFVEGflVFA","html":"http://unsplash.com/photos/zDFVEGflVFA","download":"http://unsplash.com/photos/zDFVEGflVFA/download","download_location":"https://api.unsplash.com/photos/zDFVEGflVFA/download"}
+     * user : {"id":"NBE_dppnu-0","updated_at":"2017-07-03T23:04:40-04:00","username":"joelfilip","name":"Joel Filipe","first_name":"Joel","last_name":"Filipe","twitter_username":"joelfilip","portfolio_url":"HTTP://joelfilipe.com","bio":"I am driven by a hunger for pixels, interfaces and beautiful web-based experiences. It would be awesome to see where my photos are being used. Show me: joelfilip@gmail.com Instagram: @joelfilip","location":"Madrid","total_likes":184,"total_photos":75,"total_collections":6,"profile_image":{"small":"https://images.unsplash.com/profile-1487585941294-a7378b997603?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=e6971067d0b24e8e5d903ab35441dbce","medium":"https://images.unsplash.com/profile-1487585941294-a7378b997603?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=64&w=64&s=9db6492ed8381982417006621f05eba2","large":"https://images.unsplash.com/profile-1487585941294-a7378b997603?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=128&w=128&s=36b397535985e38d8a6bf415d42e050d"},"links":{"self":"https://api.unsplash.com/users/joelfilip","html":"http://unsplash.com/@joelfilip","photos":"https://api.unsplash.com/users/joelfilip/photos","likes":"https://api.unsplash.com/users/joelfilip/likes","portfolio":"https://api.unsplash.com/users/joelfilip/portfolio","following":"https://api.unsplash.com/users/joelfilip/following","followers":"https://api.unsplash.com/users/joelfilip/followers"}}
      */
 
     private String id;
@@ -43,6 +44,7 @@ public class PicDetailBean {
     private boolean liked_by_user;
     private Object description;
     private ExifBean exif;
+    private LocationBean location;
     private UrlsBean urls;
     private LinksBean links;
     private UserBean user;
@@ -153,6 +155,14 @@ public class PicDetailBean {
         this.exif = exif;
     }
 
+    public LocationBean getLocation() {
+        return location;
+    }
+
+    public void setLocation(LocationBean location) {
+        this.location = location;
+    }
+
     public UrlsBean getUrls() {
         return urls;
     }
@@ -196,18 +206,18 @@ public class PicDetailBean {
     public static class ExifBean {
         /**
          * make : Canon
-         * model : Canon EOS 5D
-         * exposure_time : 30
-         * aperture : null
-         * focal_length : null
-         * iso : 1250
+         * model : Canon EOS 100D
+         * exposure_time : 1/4000
+         * aperture : 6.3
+         * focal_length : 41
+         * iso : 100
          */
 
         private String make;
         private String model;
         private String exposure_time;
-        private Object aperture;
-        private Object focal_length;
+        private String aperture;
+        private String focal_length;
         private int iso;
 
         public String getMake() {
@@ -234,19 +244,19 @@ public class PicDetailBean {
             this.exposure_time = exposure_time;
         }
 
-        public Object getAperture() {
+        public String getAperture() {
             return aperture;
         }
 
-        public void setAperture(Object aperture) {
+        public void setAperture(String aperture) {
             this.aperture = aperture;
         }
 
-        public Object getFocal_length() {
+        public String getFocal_length() {
             return focal_length;
         }
 
-        public void setFocal_length(Object focal_length) {
+        public void setFocal_length(String focal_length) {
             this.focal_length = focal_length;
         }
 
@@ -259,13 +269,95 @@ public class PicDetailBean {
         }
     }
 
+    public static class LocationBean {
+        /**
+         * title : Lisbon, Portugal
+         * name : Lisbon
+         * city : Lisbon
+         * country : Portugal
+         * position : {"latitude":38.7222524,"longitude":-9.13933659999998}
+         */
+
+        private String title;
+        private String name;
+        private String city;
+        private String country;
+        private PositionBean position;
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
+
+        public PositionBean getPosition() {
+            return position;
+        }
+
+        public void setPosition(PositionBean position) {
+            this.position = position;
+        }
+
+        public static class PositionBean {
+            /**
+             * latitude : 38.7222524
+             * longitude : -9.13933659999998
+             */
+
+            private double latitude;
+            private double longitude;
+
+            public double getLatitude() {
+                return latitude;
+            }
+
+            public void setLatitude(double latitude) {
+                this.latitude = latitude;
+            }
+
+            public double getLongitude() {
+                return longitude;
+            }
+
+            public void setLongitude(double longitude) {
+                this.longitude = longitude;
+            }
+        }
+    }
+
     public static class UrlsBean {
         /**
-         * raw : https://images.unsplash.com/photo-1498957090711-6b3b32329fba
-         * full : https://images.unsplash.com/photo-1498957090711-6b3b32329fba?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&s=afccb0b2b58b4730038945e71bdd086a
-         * regular : https://images.unsplash.com/photo-1498957090711-6b3b32329fba?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=c8932111760dbb93c733be1b3fe57d71
-         * small : https://images.unsplash.com/photo-1498957090711-6b3b32329fba?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&s=cb6d9c3eba023ebe7bb0fbd74d8f84de
-         * thumb : https://images.unsplash.com/photo-1498957090711-6b3b32329fba?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=a0c7e22e3a7b6d393da61896368202de
+         * raw : https://images.unsplash.com/photo-1499076218749-7d639231170d
+         * full : https://images.unsplash.com/photo-1499076218749-7d639231170d?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&s=5ffe0779cee22d430ab33eb60a40f355
+         * regular : https://images.unsplash.com/photo-1499076218749-7d639231170d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=ad84f7329af952a6aef2ec3e200d5ad5
+         * small : https://images.unsplash.com/photo-1499076218749-7d639231170d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&s=896d34e7b7f93f2507eaa4850757239c
+         * thumb : https://images.unsplash.com/photo-1499076218749-7d639231170d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=8f5b1b827b43c16764538aa3838826c9
          */
 
         private String raw;
@@ -317,10 +409,10 @@ public class PicDetailBean {
 
     public static class LinksBean {
         /**
-         * self : https://api.unsplash.com/photos/U8kQFsu9vzw
-         * html : http://unsplash.com/photos/U8kQFsu9vzw
-         * download : http://unsplash.com/photos/U8kQFsu9vzw/download
-         * download_location : https://api.unsplash.com/photos/U8kQFsu9vzw/download
+         * self : https://api.unsplash.com/photos/zDFVEGflVFA
+         * html : http://unsplash.com/photos/zDFVEGflVFA
+         * download : http://unsplash.com/photos/zDFVEGflVFA/download
+         * download_location : https://api.unsplash.com/photos/zDFVEGflVFA/download
          */
 
         private String self;
@@ -363,21 +455,21 @@ public class PicDetailBean {
 
     public static class UserBean {
         /**
-         * id : WReBKGdTjw0
-         * updated_at : 2017-07-02T22:34:29-04:00
-         * username : franciscomoreno
-         * name : Francisco  Moreno
-         * first_name : Francisco
-         * last_name : Moreno
-         * twitter_username : null
-         * portfolio_url : http://www.instagram.com/sr_morenoo
-         * bio :
-         * location : Grazalema
-         * total_likes : 20
-         * total_photos : 20
-         * total_collections : 1
-         * profile_image : {"small":"https://images.unsplash.com/profile-1484175828587-c2c9c2e9b158?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=dd419f2929ab581f4fe4f5f61afe0561","medium":"https://images.unsplash.com/profile-1484175828587-c2c9c2e9b158?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=64&w=64&s=6f4cf5f524dcf86f949cf703b0fdbf10","large":"https://images.unsplash.com/profile-1484175828587-c2c9c2e9b158?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=128&w=128&s=c248982a63c9ad531b3cc828d9f7c98a"}
-         * links : {"self":"https://api.unsplash.com/users/franciscomoreno","html":"http://unsplash.com/@franciscomoreno","photos":"https://api.unsplash.com/users/franciscomoreno/photos","likes":"https://api.unsplash.com/users/franciscomoreno/likes","portfolio":"https://api.unsplash.com/users/franciscomoreno/portfolio","following":"https://api.unsplash.com/users/franciscomoreno/following","followers":"https://api.unsplash.com/users/franciscomoreno/followers"}
+         * id : NBE_dppnu-0
+         * updated_at : 2017-07-03T23:04:40-04:00
+         * username : joelfilip
+         * name : Joel Filipe
+         * first_name : Joel
+         * last_name : Filipe
+         * twitter_username : joelfilip
+         * portfolio_url : HTTP://joelfilipe.com
+         * bio : I am driven by a hunger for pixels, interfaces and beautiful web-based experiences. It would be awesome to see where my photos are being used. Show me: joelfilip@gmail.com Instagram: @joelfilip
+         * location : Madrid
+         * total_likes : 184
+         * total_photos : 75
+         * total_collections : 6
+         * profile_image : {"small":"https://images.unsplash.com/profile-1487585941294-a7378b997603?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=e6971067d0b24e8e5d903ab35441dbce","medium":"https://images.unsplash.com/profile-1487585941294-a7378b997603?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=64&w=64&s=9db6492ed8381982417006621f05eba2","large":"https://images.unsplash.com/profile-1487585941294-a7378b997603?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=128&w=128&s=36b397535985e38d8a6bf415d42e050d"}
+         * links : {"self":"https://api.unsplash.com/users/joelfilip","html":"http://unsplash.com/@joelfilip","photos":"https://api.unsplash.com/users/joelfilip/photos","likes":"https://api.unsplash.com/users/joelfilip/likes","portfolio":"https://api.unsplash.com/users/joelfilip/portfolio","following":"https://api.unsplash.com/users/joelfilip/following","followers":"https://api.unsplash.com/users/joelfilip/followers"}
          */
 
         private String id;
@@ -386,7 +478,7 @@ public class PicDetailBean {
         private String name;
         private String first_name;
         private String last_name;
-        private Object twitter_username;
+        private String twitter_username;
         private String portfolio_url;
         private String bio;
         private String location;
@@ -444,11 +536,11 @@ public class PicDetailBean {
             this.last_name = last_name;
         }
 
-        public Object getTwitter_username() {
+        public String getTwitter_username() {
             return twitter_username;
         }
 
-        public void setTwitter_username(Object twitter_username) {
+        public void setTwitter_username(String twitter_username) {
             this.twitter_username = twitter_username;
         }
 
@@ -518,9 +610,9 @@ public class PicDetailBean {
 
         public static class ProfileImageBean {
             /**
-             * small : https://images.unsplash.com/profile-1484175828587-c2c9c2e9b158?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=dd419f2929ab581f4fe4f5f61afe0561
-             * medium : https://images.unsplash.com/profile-1484175828587-c2c9c2e9b158?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=64&w=64&s=6f4cf5f524dcf86f949cf703b0fdbf10
-             * large : https://images.unsplash.com/profile-1484175828587-c2c9c2e9b158?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=128&w=128&s=c248982a63c9ad531b3cc828d9f7c98a
+             * small : https://images.unsplash.com/profile-1487585941294-a7378b997603?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=32&w=32&s=e6971067d0b24e8e5d903ab35441dbce
+             * medium : https://images.unsplash.com/profile-1487585941294-a7378b997603?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=64&w=64&s=9db6492ed8381982417006621f05eba2
+             * large : https://images.unsplash.com/profile-1487585941294-a7378b997603?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&fit=crop&h=128&w=128&s=36b397535985e38d8a6bf415d42e050d
              */
 
             private String small;
@@ -554,13 +646,13 @@ public class PicDetailBean {
 
         public static class LinksBeanX {
             /**
-             * self : https://api.unsplash.com/users/franciscomoreno
-             * html : http://unsplash.com/@franciscomoreno
-             * photos : https://api.unsplash.com/users/franciscomoreno/photos
-             * likes : https://api.unsplash.com/users/franciscomoreno/likes
-             * portfolio : https://api.unsplash.com/users/franciscomoreno/portfolio
-             * following : https://api.unsplash.com/users/franciscomoreno/following
-             * followers : https://api.unsplash.com/users/franciscomoreno/followers
+             * self : https://api.unsplash.com/users/joelfilip
+             * html : http://unsplash.com/@joelfilip
+             * photos : https://api.unsplash.com/users/joelfilip/photos
+             * likes : https://api.unsplash.com/users/joelfilip/likes
+             * portfolio : https://api.unsplash.com/users/joelfilip/portfolio
+             * following : https://api.unsplash.com/users/joelfilip/following
+             * followers : https://api.unsplash.com/users/joelfilip/followers
              */
 
             private String self;

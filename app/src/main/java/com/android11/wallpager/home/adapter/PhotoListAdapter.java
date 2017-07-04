@@ -14,6 +14,7 @@ import com.android11.wallpager.home.bean.PhotoListBean;
 import com.android11.wallpager.utils.SharePreferenceUtil;
 import com.android11.wallpager.utils.Tools;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 
@@ -59,9 +60,9 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
         SharePreferenceUtil spu = Tools.getSpu(mActivity);
         // 是否高清模式
         if (spu.getHighQulit()) {
-            Glide.with(mActivity).load(bean.getUrls().getRegular()).centerCrop().into(oholder.ivphoto);
+            Glide.with(mActivity).load(bean.getUrls().getRegular()).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
         } else {
-            Glide.with(mActivity).load(bean.getUrls().getSmall()).centerCrop().into(oholder.ivphoto);
+            Glide.with(mActivity).load(bean.getUrls().getSmall()).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
         }
 
         oholder.tvname.setText(bean.getUser().getName());

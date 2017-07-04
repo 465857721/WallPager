@@ -1,11 +1,8 @@
 package com.android11.wallpager.home.presenter;
 
 
-import android.util.Log;
-
 import com.android11.wallpager.home.bean.PhotoListBean;
 import com.android11.wallpager.home.iviews.IGetPhotosView;
-import com.android11.wallpager.utils.Const;
 import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -16,7 +13,6 @@ import java.util.List;
 import okhttp3.Call;
 
 import static com.android11.wallpager.utils.GsonUtils.getGsonInstance;
-import static com.umeng.analytics.pro.x.i;
 
 
 /**
@@ -31,6 +27,8 @@ public class GetPhotosPresenter {
     }
 
     public void getPhoto(final int type) {
+        if (iView == null)
+            return;
         OkHttpUtils
                 .get()
                 .url(iView.getUrl())
@@ -48,8 +46,8 @@ public class GetPhotosPresenter {
                     public void onResponse(String s, int i) {
                         ArrayList<PhotoListBean> list = getGsonInstance().fromJson(
                                 s, new TypeToken<List<PhotoListBean>>() {
-                        }.getType());
-                        iView.onGetPhotes(list,type);
+                                }.getType());
+                        iView.onGetPhotes(list, type);
                     }
                 });
     }

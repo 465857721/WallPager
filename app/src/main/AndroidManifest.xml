@@ -34,6 +34,10 @@
         <activity android:name=".setting.SettingActivity"/>
         <activity
             android:name=".pic.PicDetailActivity"/>
+
+
+        <meta-data android:name="com.android11.wallpager.utils.GlideCache"
+                   android:value="GlideModule"/>
     </application>
 
 </manifest>
