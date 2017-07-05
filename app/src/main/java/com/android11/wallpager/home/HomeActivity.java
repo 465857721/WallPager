@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import com.android11.wallpager.R;
 import com.android11.wallpager.about.AboutActivity;
 import com.android11.wallpager.home.adapter.HomeFragmentPagerAdapter;
+import com.android11.wallpager.home.fragment.CollectionFragment;
 import com.android11.wallpager.home.fragment.PhotosFragment;
 import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.setting.SettingActivity;
@@ -83,21 +84,24 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         PhotosFragment lastFragment = new PhotosFragment();
         lastFragment.setUrl(Const.LASTPHOTO);
-        PhotosFragment hotFragment = new PhotosFragment();
-        hotFragment.setUrl(Const.LASTPHOTO);
-        hotFragment.setOrderby(OrderType.POPULAR);
         PhotosFragment curatedFragment = new PhotosFragment();
         curatedFragment.setUrl(Const.CURATEDPHOTO);
 
+        CollectionFragment collectionFragment = new CollectionFragment();
+//        collectionFragment.setUrl(Const.LASTPHOTO2);
+//        hotFragment.setOrderby(OrderType.POPULAR);
+
+
         list_fragment.add(lastFragment);
-        list_fragment.add(hotFragment);
         list_fragment.add(curatedFragment);
+        list_fragment.add(collectionFragment);
+
         tab.setTabMode(TabLayout.GRAVITY_CENTER);
 
         list_title = new ArrayList<>();
         list_title.add("最新");
-        list_title.add("热门");
         list_title.add("精选");
+        list_title.add("选集");
         vp.setAdapter(new HomeFragmentPagerAdapter(
                 getSupportFragmentManager(), list_fragment, list_title));
 

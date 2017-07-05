@@ -39,6 +39,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile 'com.github.bumptech.glide:okhttp-integration:1.2.2'
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.5.0@aar'
+
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
 }

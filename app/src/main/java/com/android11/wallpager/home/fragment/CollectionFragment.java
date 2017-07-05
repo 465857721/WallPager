@@ -9,14 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android11.wallpager.R;
-import com.android11.wallpager.home.adapter.PhotoListAdapter;
-import com.android11.wallpager.home.bean.PhotoListBean;
-import com.android11.wallpager.home.iviews.IGetPhotosView;
-import com.android11.wallpager.home.presenter.GetPhotosPresenter;
+import com.android11.wallpager.home.adapter.CollectionListAdapter;
+import com.android11.wallpager.home.bean.CollectionBean;
+import com.android11.wallpager.home.iviews.IGetCollectionView;
+import com.android11.wallpager.home.presenter.GetCollectionPresenter;
 import com.android11.wallpager.main.BaseFragment;
 import com.android11.wallpager.pic.PicDetailActivity;
 import com.android11.wallpager.utils.OperaType;
-import com.android11.wallpager.utils.OrderType;
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
@@ -26,24 +25,29 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnItemClickLitener,IGetPhotosView, SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
+public class CollectionFragment extends BaseFragment implements
+        IGetCollectionView,
+        CollectionListAdapter.OnItemClickLitener,
+        SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
+
     @Bind(R.id.listview)
     SuperRecyclerView listview;
     private int page = 1;
-    private GetPhotosPresenter getPhotosPresenter;
-    private PhotoListAdapter photoListAdapter;
-    private ArrayList<PhotoListBean> list = new ArrayList<>();
-    private String url;
-    private String orderby = OrderType.LATEST;
+
+    private GetCollectionPresenter getPhotosPresenter;
+    private CollectionListAdapter photoListAdapter;
+    private ArrayList<CollectionBean> list = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getPhotosPresenter = new GetPhotosPresenter(this);
-        View v = inflater.inflate(R.layout.frag_last, null);
 
+        View v = inflater.inflate(R.layout.fragment_collection, null);
         ButterKnife.bind(this, v);
-        photoListAdapter = new PhotoListAdapter(list, getActivity());
+
+        getPhotosPresenter = new GetCollectionPresenter(this);
+        photoListAdapter = new CollectionListAdapter(list, getActivity());
         photoListAdapter.setOnItemClickLitener(this);
         listview.setLayoutManager(new LinearLayoutManager(getActivity()));
         listview.setAdapter(photoListAdapter);
@@ -56,31 +60,15 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
         return v;
     }
 
-    public void setOrderby(String orderby) {
-        this.orderby = orderby;
-    }
-
-    @Override
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 
     @Override
     public String getPage() {
         return "" + page;
     }
 
-    @Override
-    public String getOrderBy() {
-        return orderby;
-    }
 
     @Override
-    public void onGetPhotes(ArrayList<PhotoListBean> rlist, int type) {
+    public void onGetPhotes(ArrayList<CollectionBean> rlist, int type) {
         if (listview == null)
             return;
 
@@ -93,8 +81,8 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
         listview.setRefreshing(false);
         this.list.addAll(rlist);
         photoListAdapter.notifyDataSetChanged();
-
     }
+
 
     @Override
     public void onDestroyView() {
@@ -127,10 +115,9 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
 
     @Override
     public void onItemClick(View view, int position) {
-        Intent godetail = new Intent(getActivity(), PicDetailActivity.class);
-        godetail.putExtra("id",list.get(position).getId());
-        godetail.putExtra("color",list.get(position).getColor());
-        godetail.putExtra("url",list.get(position).getUrls().getRegular());
-        startActivity(godetail);
+//        Intent godetail = new Intent(getActivity(), PicDetailActivity.class);
+//        godetail.putExtra("id", list.get(position).getId());
+//        godetail.putExtra("url", list.get(position).getUrls().getRegular());
+//        startActivity(godetail);
     }
 }

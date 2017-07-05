@@ -40,6 +40,7 @@
         <meta-data
             android:name="com.android11.wallpager.utils.GlideCache"
             android:value="GlideModule"/>
+
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="595c3ce74544cb23cb0014d9"/>

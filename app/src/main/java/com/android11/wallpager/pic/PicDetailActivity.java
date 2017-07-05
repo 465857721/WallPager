@@ -96,7 +96,8 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         getPhotoDetailPresenter = new GetPhotoDetailPresenter(this);
         getPhotoDetailPresenter.getPhoto();
         getLocalURrl();
-        ctlTop.setBackgroundColor(Color.parseColor(getIntent().getStringExtra("color")));
+        if (!TextUtils.isEmpty(getIntent().getStringExtra("color")))
+            ctlTop.setBackgroundColor(Color.parseColor(getIntent().getStringExtra("color")));
         Glide.with(this).load(getIntent().getStringExtra("url")).centerCrop().into(ivTop);
 
     }
