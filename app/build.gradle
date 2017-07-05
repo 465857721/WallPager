@@ -7,8 +7,8 @@ android {
         applicationId "com.android11.wallpager"
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 100
+        versionName "1.0.0"
     }
     buildTypes {
         release {
@@ -40,4 +40,5 @@ dependencies {
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.github.bumptech.glide:okhttp-integration:1.2.2'
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
 }

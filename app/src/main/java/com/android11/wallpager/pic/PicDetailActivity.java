@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android11.wallpager.R;
 import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.pic.bean.PicDetailBean;
@@ -79,6 +80,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     private Context mContext;
     private Handler mHandler;
     private String localUrl;
+    private MaterialDialog dialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -158,7 +160,16 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
                         "发现美图", bean.getUser().getName(), localUrl);
                 break;
             case R.id.tv_set_phone_page:
-                setWallPaper();
+                dialog = new MaterialDialog.Builder(this)
+                        .content("正在设置壁纸请稍等...")
+                        .show();
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        setWallPaper();
+                    }
+                }, 2000);
+
                 break;
         }
     }
@@ -172,16 +183,16 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
             WallpaperManager mWallManager = WallpaperManager.getInstance(this);
             mWallManager.setBitmap(bitmap);
             Tools.toastInBottom(this, "设置成功");
-//            dialog.dismiss();
+            dialog.dismiss();
         } catch (Exception e) {
             Tools.toastInBottom(this, "设置失败");
-//            dialog.dismiss();
+            dialog.dismiss();
             e.printStackTrace();
 
         }
     }
 
-    //设置壁纸
+    //下载壁纸
     public void downWallPaper() {
         Bitmap bitmap = BitmapFactory.decodeFile(localUrl);
         if (bitmap != null) {

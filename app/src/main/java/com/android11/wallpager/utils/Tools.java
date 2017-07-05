@@ -293,7 +293,7 @@ public class Tools {
     public static void saveImageToGallery(Context context, Bitmap bmp) {
         // 首先保存图片
         File currentFile;
-        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsoluteFile();//注意小米手机必须这样获得public绝对路径
+        File file = Environment.getExternalStorageDirectory();
         String fileName = "android11/download";
         File appDir = new File(file, fileName);
         if (!appDir.exists()) {
@@ -329,7 +329,7 @@ public class Tools {
     /**
      * 分享功能
      *
-     * @param context       上下文
+     * @param mContext      上下文
      * @param activityTitle Activity的名字
      * @param msgTitle      消息标题
      * @param msgText       消息内容
