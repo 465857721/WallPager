@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -58,6 +59,11 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         }
     }
 
+    @Override
+    protected void setStatusBar() {
+//        super.setStatusBar();
+    }
+
     private void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,10 +74,11 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        StatusBarUtil.setColorForDrawerLayout(this, drawer, ContextCompat.getColor(this, R.color.colorPrimaryDark));
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        StatusBarUtil.setColorForDrawerLayout(this, drawer, getResources().getColor(R.color.colorAccent));
+
         //初始 fragment
 
         PhotosFragment lastFragment = new PhotosFragment();
@@ -97,6 +104,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         tab.setupWithViewPager(vp);
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
