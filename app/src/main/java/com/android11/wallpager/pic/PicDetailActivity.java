@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -139,12 +140,18 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 
         tvTime.setText("拍摄于 " + bean.getCreated_at().split("T")[0]);
         tvAttrSize.setText("分辨率：" + bean.getWidth() + " x " + bean.getHeight());
-        tvAttrExposure.setText("快门：" + bean.getExif().getExposure_time());
-        tvAttrAperture.setText("光圈：" + bean.getExif().getAperture());//光圈
-        tvAttrFocal.setText("焦距：" + bean.getExif().getFocal_length());
-        tvAttrModel.setText("器材：" + bean.getExif().getModel());
-        tvAttrIso.setText("感光度：" + bean.getExif().getIso() + "");
-        if (bean.getLocation() != null)
+
+        if (!TextUtils.isEmpty(bean.getExif().getExposure_time()))
+            tvAttrExposure.setText("快门：" + bean.getExif().getExposure_time());
+        if (!TextUtils.isEmpty(bean.getExif().getAperture()))
+            tvAttrAperture.setText("光圈：" + bean.getExif().getAperture());//光圈
+        if (!TextUtils.isEmpty(bean.getExif().getFocal_length()))
+            tvAttrFocal.setText("焦距：" + bean.getExif().getFocal_length());
+        if (!TextUtils.isEmpty(bean.getExif().getModel()))
+            tvAttrModel.setText("器材：" + bean.getExif().getModel());
+        if (!TextUtils.isEmpty(bean.getExif().getIso()))
+            tvAttrIso.setText("感光度：" + bean.getExif().getIso());
+        if (bean.getLocation() != null && !TextUtils.isEmpty(bean.getLocation().getName()))
             tvAttrLoaction.setText("拍摄地：" + bean.getLocation().getName());
 
 
@@ -178,7 +185,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     @Override
     protected void setStatusBar() {
 //        super.setStatusBar();
-        StatusBarUtil.setTranslucentForImageView(this,255, ivTop);
+        StatusBarUtil.setTranslucentForImageView(this, 255, ivTop);
     }
 
     //设置壁纸

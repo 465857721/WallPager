@@ -28,6 +28,7 @@
                 app:layout_collapseMode="parallax"/>
 
             <android.support.v7.widget.Toolbar
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 android:layout_marginTop="20dp"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"

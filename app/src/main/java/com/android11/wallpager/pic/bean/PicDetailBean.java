@@ -218,7 +218,7 @@ public class PicDetailBean {
         private String exposure_time;
         private String aperture;
         private String focal_length;
-        private int iso;
+        private String iso;
 
         public String getMake() {
             return make;
@@ -260,11 +260,11 @@ public class PicDetailBean {
             this.focal_length = focal_length;
         }
 
-        public int getIso() {
+        public String getIso() {
             return iso;
         }
 
-        public void setIso(int iso) {
+        public void setIso(String iso) {
             this.iso = iso;
         }
     }
