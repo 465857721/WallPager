@@ -5,9 +5,11 @@ import android.app.WallpaperManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -69,6 +71,8 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     View divide;
     @Bind(R.id.tv_attr_loaction)
     TextView tvAttrLoaction;
+    @Bind(R.id.ctl_top)
+    CollapsingToolbarLayout ctlTop;
 
     private GetPhotoDetailPresenter getPhotoDetailPresenter;
     private PicDetailBean bean;
@@ -88,6 +92,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         getPhotoDetailPresenter = new GetPhotoDetailPresenter(this);
         getPhotoDetailPresenter.getPhoto();
         getLocalURrl();
+        ctlTop.setBackgroundColor(Color.parseColor(getIntent().getStringExtra("color")));
         Glide.with(this).load(getIntent().getStringExtra("url")).centerCrop().into(ivTop);
 
     }
@@ -149,6 +154,8 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
                 downWallPaper();
                 break;
             case R.id.tv_share:
+                Tools.shareMsg(mContext, getString(R.string.app_name),
+                        "发现美图", bean.getUser().getName(), localUrl);
                 break;
             case R.id.tv_set_phone_page:
                 setWallPaper();
@@ -158,13 +165,17 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 
     //设置壁纸
     public void setWallPaper() {
+
+
         try {
             Bitmap bitmap = BitmapFactory.decodeFile(localUrl);
             WallpaperManager mWallManager = WallpaperManager.getInstance(this);
             mWallManager.setBitmap(bitmap);
             Tools.toastInBottom(this, "设置成功");
+//            dialog.dismiss();
         } catch (Exception e) {
             Tools.toastInBottom(this, "设置失败");
+//            dialog.dismiss();
             e.printStackTrace();
 
         }

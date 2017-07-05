@@ -1,12 +1,14 @@
 package com.android11.wallpager.home.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android11.wallpager.R;
@@ -57,12 +59,15 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final OrderViewHolder oholder = (OrderViewHolder) holder;
         PhotoListBean bean = list.get(position);
+        oholder.rlItem.setBackgroundColor(Color.parseColor(bean.getColor()));
+
+
         SharePreferenceUtil spu = Tools.getSpu(mActivity);
         // 是否高清模式
         if (spu.getHighQulit()) {
-            Glide.with(mActivity).load(bean.getUrls().getRegular()).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
+            Glide.with(mActivity).load(bean.getUrls().getRegular()).thumbnail(0.1f).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
         } else {
-            Glide.with(mActivity).load(bean.getUrls().getSmall()).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
+            Glide.with(mActivity).load(bean.getUrls().getSmall()) .thumbnail(0.1f).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
         }
 
         oholder.tvname.setText(bean.getUser().getName());
@@ -95,7 +100,8 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
         TextView tvname;
         @Bind(R.id.tv_des)
         TextView tvdes;
-
+        @Bind(R.id.rl_item)
+        RelativeLayout rlItem;
         public OrderViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);

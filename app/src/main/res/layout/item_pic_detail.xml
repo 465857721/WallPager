@@ -25,6 +25,7 @@
         android:textSize="23sp"
         android:textStyle="bold"
         tools:text="ASDFEasdfasdf"/>
+
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="match_parent"
@@ -34,10 +35,11 @@
         android:textColor="@color/md_grey_500"
         android:textSize="16sp"
         tools:text="拍摄于：201710202"/>
+
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <TextView
@@ -78,56 +80,72 @@
             android:text="设为壁纸"
             tools:ignore="RtlHardcoded"/>
     </LinearLayout>
+
     <View
         android:id="@+id/divide"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/md_grey_300"
         android:layout_marginTop="60dp"
+        android:background="@color/md_grey_300"
         />
+
     <TextView
-        android:paddingLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:text="照片属性"
-        android:textSize="20sp"
         android:clickable="true"
         android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="照片属性"
         android:textColor="@color/md_grey_700"
+        android:textSize="20sp"
         />
+
     <TextView
         android:id="@+id/tv_attr_size"
         style="@style/PhotoAttrTextViewStyle"
         android:drawableLeft="@drawable/ic_size"
+        android:text="@string/tips_noinfo"
         />
+
     <TextView
         android:id="@+id/tv_attr_exposure"
         style="@style/PhotoAttrTextViewStyle"
         android:drawableLeft="@drawable/ic_exposure"
+        android:text="@string/tips_noinfo"
         />
+
     <TextView
         android:id="@+id/tv_attr_aperture"
         style="@style/PhotoAttrTextViewStyle"
         android:drawableLeft="@drawable/ic_aperture"
+        android:text="@string/tips_noinfo"
         />
+
     <TextView
         android:id="@+id/tv_attr_focal"
         style="@style/PhotoAttrTextViewStyle"
         android:drawableLeft="@drawable/ic_focal"
+        android:text="@string/tips_noinfo"
         />
+
     <TextView
         android:id="@+id/tv_attr_model"
         style="@style/PhotoAttrTextViewStyle"
         android:drawableLeft="@drawable/ic_model"
+        android:text="@string/tips_noinfo"
         />
+
     <TextView
         android:id="@+id/tv_attr_iso"
         style="@style/PhotoAttrTextViewStyle"
         android:drawableLeft="@drawable/ic_iso"
+        android:text="@string/tips_noinfo"
         />
+
     <TextView
         android:id="@+id/tv_attr_loaction"
         style="@style/PhotoAttrTextViewStyle"
         android:drawableLeft="@drawable/ic_location"
+        android:text="@string/tips_noinfo"
         />
 </LinearLayout>
