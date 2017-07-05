@@ -14,8 +14,8 @@ public interface Const {
     String CLIENT_ID = "41f1f23556b01d63b1ae823bdf008cc32ce446f77c843e2daa2a80c770015df3";
     String BASEURL = "https://api.unsplash.com/";
     String LASTPHOTO = BASEURL + "photos";
-    String COLLECTIONS = BASEURL + "collections/curated";
-    String COLLECTIONS_ID = BASEURL + "collections/curated/%s/photos";
+    String COLLECTIONS = BASEURL + "collections/featured";
+    String COLLECTIONS_ID = BASEURL + "collections/%s/photos";
 
     String CURATEDPHOTO = BASEURL + "photos/curated";
     String PHOTODETAIL = BASEURL + "photos/";

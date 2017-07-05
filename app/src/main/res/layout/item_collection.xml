@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_item"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:layout_marginTop="3dp"
+
+    android:background="@color/icon_gray_hint">
+
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:textSize="14sp"
+            android:id="@+id/tv_picnum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            tools:text="77照片"/>
+
+        <TextView
+            android:textSize="16sp"
+            android:layout_marginTop="3dp"
+            android:id="@+id/tv_title"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            tools:text="A man drinking a coffee."/>
+    </LinearLayout>
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:visibility="gone"
+            android:textSize="16sp"
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            tools:text="Gilbert Kane"/>
+
+        <TextView
+            android:textSize="12sp"
+            android:layout_marginTop="3dp"
+            android:id="@+id/tv_des"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            tools:text="A man drinking a coffee."/>
+    </LinearLayout>
+</RelativeLayout>

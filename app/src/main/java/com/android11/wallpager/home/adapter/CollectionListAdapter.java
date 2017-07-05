@@ -40,7 +40,7 @@ public class CollectionListAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new OrderViewHolder(LayoutInflater.from(mActivity).inflate(R.layout.item_photos, parent, false));
+        return new OrderViewHolder(LayoutInflater.from(mActivity).inflate(R.layout.item_collection, parent, false));
 
     }
 
@@ -72,6 +72,8 @@ public class CollectionListAdapter extends RecyclerView.Adapter {
         }
 
         oholder.tvname.setText(bean.getUser().getName());
+        oholder.tvpicnum.setText(bean.getTotal_photos()+"照片");
+        oholder.tvtitle.setText(bean.getTitle());
         if (TextUtils.isEmpty(bean.getDescription())) {
             oholder.tvdes.setVisibility(View.GONE);
         } else {
@@ -103,6 +105,12 @@ public class CollectionListAdapter extends RecyclerView.Adapter {
         TextView tvdes;
         @Bind(R.id.rl_item)
         RelativeLayout rlItem;
+        @Bind(R.id.tv_picnum)
+        TextView tvpicnum;
+        @Bind(R.id.tv_title)
+        TextView tvtitle;
+
+
         public OrderViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);

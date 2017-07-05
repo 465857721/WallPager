@@ -6,6 +6,7 @@ import com.android11.wallpager.home.bean.PhotoListBean;
 import com.android11.wallpager.home.iviews.IGetCollectionView;
 import com.android11.wallpager.home.iviews.IGetPhotosView;
 import com.android11.wallpager.utils.Const;
+import com.android11.wallpager.utils.OrderType;
 import com.google.gson.reflect.TypeToken;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -37,6 +38,7 @@ public class GetCollectionPresenter {
                 .url(Const.COLLECTIONS)
                 .addParams("client_id", iView.getClientId())
                 .addParams("page", iView.getPage())
+                .addParams("order_by", OrderType.LATEST)
                 .build()
                 .execute(new StringCallback() {
                     @Override
