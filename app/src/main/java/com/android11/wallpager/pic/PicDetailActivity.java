@@ -26,6 +26,7 @@ import com.android11.wallpager.utils.Tools;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.target.Target;
+import com.jaeger.library.StatusBarUtil;
 
 import java.io.File;
 import java.util.concurrent.ExecutionException;
@@ -172,6 +173,12 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 
                 break;
         }
+    }
+
+    @Override
+    protected void setStatusBar() {
+//        super.setStatusBar();
+        StatusBarUtil.setTranslucentForImageView(this,255, ivTop);
     }
 
     //设置壁纸
