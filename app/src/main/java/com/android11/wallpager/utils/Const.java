@@ -15,6 +15,7 @@ public interface Const {
     String BASEURL = "https://api.unsplash.com/";
     String LASTPHOTO = BASEURL + "photos";
     String COLLECTIONS = BASEURL + "collections/curated";
+    String COLLECTIONS_ID = BASEURL + "collections/curated/%s/photos";
 
     String CURATEDPHOTO = BASEURL + "photos/curated";
     String PHOTODETAIL = BASEURL + "photos/";

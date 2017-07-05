@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android11.wallpager.R;
+import com.android11.wallpager.collection.CollectionActivity;
 import com.android11.wallpager.home.adapter.CollectionListAdapter;
 import com.android11.wallpager.home.bean.CollectionBean;
 import com.android11.wallpager.home.iviews.IGetCollectionView;
 import com.android11.wallpager.home.presenter.GetCollectionPresenter;
 import com.android11.wallpager.main.BaseFragment;
-import com.android11.wallpager.pic.PicDetailActivity;
 import com.android11.wallpager.utils.OperaType;
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
@@ -115,9 +115,9 @@ public class CollectionFragment extends BaseFragment implements
 
     @Override
     public void onItemClick(View view, int position) {
-//        Intent godetail = new Intent(getActivity(), PicDetailActivity.class);
-//        godetail.putExtra("id", list.get(position).getId());
-//        godetail.putExtra("url", list.get(position).getUrls().getRegular());
-//        startActivity(godetail);
+        Intent godetail = new Intent(getActivity(), CollectionActivity.class);
+        godetail.putExtra("id", list.get(position).getId() + "");
+        godetail.putExtra("title", list.get(position).getTitle());
+        startActivity(godetail);
     }
 }

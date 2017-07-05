@@ -34,7 +34,9 @@ public class EmptyActivity extends BaseActivity {
     }
 
     private void initViw() {
-        mToolbar.setNavigationIcon(R.drawable.icon_back);
+        setSupportActionBar(mToolbar);
+        //显示那个箭头
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setTitle("关于");
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {

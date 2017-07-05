@@ -135,7 +135,8 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 //        } else {
 //            Glide.with(this).load(bean.getUrls().getSmall()).centerCrop().into(ivTop);
 //        }
-        Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge()).into(ivHead);
+        Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge())
+                .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
         tvName.setText(bean.getUser().getName());
 
 
