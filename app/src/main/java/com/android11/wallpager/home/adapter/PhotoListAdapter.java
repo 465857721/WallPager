@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -67,8 +68,9 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
         if (spu.getHighQulit()) {
             Glide.with(mActivity).load(bean.getUrls().getRegular()).thumbnail(0.1f).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
         } else {
-            Glide.with(mActivity).load(bean.getUrls().getSmall()) .thumbnail(0.1f).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
+            Glide.with(mActivity).load(bean.getUrls().getSmall()).thumbnail(0.1f).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
         }
+        Glide.with(mActivity).load(bean.getUser().getProfile_image().getLarge()).centerCrop().dontAnimate().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivHead);
 
         oholder.tvname.setText(bean.getUser().getName());
         if (TextUtils.isEmpty(bean.getDescription())) {
@@ -102,6 +104,9 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
         TextView tvdes;
         @Bind(R.id.rl_item)
         RelativeLayout rlItem;
+        @Bind(R.id.iv_head)
+        CircleImageView ivHead;
+
         public OrderViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
