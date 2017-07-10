@@ -92,6 +92,8 @@ public class LoadingActivity extends BaseActivity implements SplashADListener {
 
     private void next() {
         this.startActivity(new Intent(this, HomeActivity.class));
+        overridePendingTransition(android.R.anim.fade_in,
+                android.R.anim.fade_out);
         //防止用户回退看到此页面
         this.finish();
     }

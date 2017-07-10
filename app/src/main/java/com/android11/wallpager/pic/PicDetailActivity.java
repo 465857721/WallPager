@@ -99,7 +99,8 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         if (!TextUtils.isEmpty(getIntent().getStringExtra("color")))
             ctlTop.setBackgroundColor(Color.parseColor(getIntent().getStringExtra("color")));
         Glide.with(this).load(getIntent().getStringExtra("url")).centerCrop().into(ivTop);
-
+        Glide.with(this).load(getIntent().getStringExtra("headurl"))
+                .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
     }
 
     @Override
@@ -135,8 +136,8 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 //        } else {
 //            Glide.with(this).load(bean.getUrls().getSmall()).centerCrop().into(ivTop);
 //        }
-        Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge())
-                .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
+//        Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge())
+//                .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
         tvName.setText(bean.getUser().getName());
 
 

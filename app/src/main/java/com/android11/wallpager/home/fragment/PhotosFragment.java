@@ -134,12 +134,13 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
         godetail.putExtra("id", list.get(position).getId());
         godetail.putExtra("color", list.get(position).getColor());
         godetail.putExtra("url", list.get(position).getUrls().getRegular());
-
+        godetail.putExtra("headurl", list.get(position).getUser().getProfile_image().getLarge());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startActivity(godetail,
                     ActivityOptions
                             .makeSceneTransitionAnimation(getActivity(),
+//                                    Pair.create(view.findViewById(R.id.tv_name), "tvname"),
                                     Pair.create(view, "ivpic"),
                                     Pair.create(view.findViewById(R.id.iv_head), "headpic"))
                             .toBundle());
