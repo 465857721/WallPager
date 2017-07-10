@@ -68,9 +68,9 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
     private void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Unsplash&摄影&壁纸");
 
+        toolbar.setTitle("Unsplash摄影&壁纸");
+        setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
