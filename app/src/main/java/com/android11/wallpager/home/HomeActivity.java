@@ -21,6 +21,7 @@ import com.android11.wallpager.home.adapter.HomeFragmentPagerAdapter;
 import com.android11.wallpager.home.fragment.CollectionFragment;
 import com.android11.wallpager.home.fragment.PhotosFragment;
 import com.android11.wallpager.main.BaseActivity;
+import com.android11.wallpager.search.SearchActivity;
 import com.android11.wallpager.setting.SettingActivity;
 import com.android11.wallpager.utils.Const;
 import com.android11.wallpager.utils.OrderType;
@@ -68,7 +69,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Unsplash&摄影壁纸");
+        toolbar.setTitle("Unsplash&摄影&壁纸");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -122,8 +123,9 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.about:
-                Tools.toastInBottom(this, "尽请期待");
+            case R.id.search:
+                Intent goSearch = new Intent(this, SearchActivity.class);
+                startActivity(goSearch);
                 return true;
         }
         return super.onOptionsItemSelected(item);

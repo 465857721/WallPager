@@ -41,7 +41,7 @@
         <activity android:name=".setting.SettingActivity"/>
         <activity android:name=".pic.PicDetailActivity"/>
         <activity android:name=".collection.CollectionActivity"/>
-
+        <activity android:name=".search.SearchActivity"/>
 
         <meta-data
             android:name="com.android11.wallpager.utils.GlideCache"
