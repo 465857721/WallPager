@@ -19,6 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/icon_gray_hint"
+            android:transitionName="ivpic"
+            tools:targetApi="lollipop"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
@@ -44,6 +46,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
+            android:background="@color/color_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

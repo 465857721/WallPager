@@ -1,9 +1,12 @@
 package com.android11.wallpager.home.fragment;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +29,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnItemClickLitener,IGetPhotosView, SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
+public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnItemClickLitener, IGetPhotosView, SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
     @Bind(R.id.listview)
     SuperRecyclerView listview;
     private int page = 1;
@@ -128,9 +131,21 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
     @Override
     public void onItemClick(View view, int position) {
         Intent godetail = new Intent(getActivity(), PicDetailActivity.class);
-        godetail.putExtra("id",list.get(position).getId());
-        godetail.putExtra("color",list.get(position).getColor());
-        godetail.putExtra("url",list.get(position).getUrls().getRegular());
-        startActivity(godetail);
+        godetail.putExtra("id", list.get(position).getId());
+        godetail.putExtra("color", list.get(position).getColor());
+        godetail.putExtra("url", list.get(position).getUrls().getRegular());
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            startActivity(godetail,
+                    ActivityOptions
+                            .makeSceneTransitionAnimation(getActivity(),
+                                    Pair.create(view, "ivpic"),
+                                    Pair.create(view.findViewById(R.id.iv_head), "headpic"))
+                            .toBundle());
+        } else {
+            startActivity(godetail);
+        }
+
     }
 }

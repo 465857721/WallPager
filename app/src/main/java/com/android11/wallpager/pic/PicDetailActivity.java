@@ -187,7 +187,8 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     @Override
     protected void setStatusBar() {
 //        super.setStatusBar();
-        StatusBarUtil.setTranslucentForImageView(this, 255, ivTop);
+//        StatusBarUtil.setTranslucentForImageView(this, 255, ivTop);
+        StatusBarUtil.setTranslucent(this, 255);
     }
 
     //设置壁纸

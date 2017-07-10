@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_item"
     android:layout_width="match_parent"
     android:layout_height="240dp"
     android:layout_marginTop="3dp"
-
+    android:transitionName="ivpic"
+    tools:targetApi="lollipop"
     android:background="@color/icon_gray_hint">
 
     <ImageView
@@ -16,39 +17,43 @@
         android:layout_height="match_parent"/>
 
     <LinearLayout
-        android:paddingLeft="10dp"
-        android:paddingBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp">
+
         <de.hdodenhof.circleimageview.CircleImageView
+            android:transitionName="headpic"
+            tools:targetApi="lollipop"
             android:id="@+id/iv_head"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/default_avatar_round"
             app:civ_border_color="@color/white"
             app:civ_border_width="1dp"/>
+
         <TextView
-            android:layout_marginTop="6dp"
-            android:textSize="16sp"
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/white"
+            android:textSize="16sp"
             tools:text="Gilbert Kane"/>
 
         <TextView
-            android:textSize="12sp"
-            android:layout_marginTop="3dp"
             android:id="@+id/tv_des"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/white"
+            android:textSize="12sp"
             tools:text="A man drinking a coffee."/>
     </LinearLayout>
 </RelativeLayout>
