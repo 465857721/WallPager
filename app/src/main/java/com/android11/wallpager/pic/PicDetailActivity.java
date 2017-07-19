@@ -17,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.pic.bean.PicDetailBean;
 import com.android11.wallpager.pic.iviews.IGetPhotoDetailView;
 import com.android11.wallpager.pic.presenter.GetPhotoDetailPresenter;
+import com.android11.wallpager.search.SearchActivity;
 import com.android11.wallpager.utils.Tools;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
@@ -108,7 +111,23 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         Glide.with(this).load(getIntent().getStringExtra("headurl"))
                 .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_pic_detail, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.share:
+                Tools.shareMsg(mContext, getString(R.string.app_name),
+                        "发现美图", bean.getUser().getName(), localUrl);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
