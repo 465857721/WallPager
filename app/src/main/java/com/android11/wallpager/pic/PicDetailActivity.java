@@ -166,7 +166,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 
     }
 
-    @OnClick({R.id.iv_top, R.id.tv_load_photo, R.id.tv_share, R.id.tv_set_phone_page})
+    @OnClick({R.id.iv_head, R.id.iv_top, R.id.tv_load_photo, R.id.tv_share, R.id.tv_set_phone_page})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_top:
@@ -208,7 +208,13 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
                         setWallPaper();
                     }
                 }, 2000);
-
+                break;
+            case R.id.iv_head:
+                if (bean == null)
+                    break;
+                Intent gouser = new Intent(this, UserPicListActivity.class);
+                gouser.putExtra("name", bean.getUser().getUsername());
+                startActivity(gouser);
                 break;
         }
     }

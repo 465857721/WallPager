@@ -20,5 +20,6 @@ public interface Const {
     String CURATEDPHOTO = BASEURL + "photos/curated";
     String PHOTODETAIL = BASEURL + "photos/";
     String SEARCH_PHOTOS = BASEURL + "search/photos";
+    String USERPICLIST = BASEURL + "users/%s/photos";
 
 }

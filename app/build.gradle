@@ -38,7 +38,7 @@ dependencies {
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.github.bumptech.glide:okhttp3-integration:1.5.0@aar'
-
+    compile 'com.wang.avi:library:2.1.3'
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
     compile 'me.xiaopan:sketch:2.4.1'
 }

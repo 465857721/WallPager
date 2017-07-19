@@ -94,6 +94,8 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
 
         listview.setLoadingMore(false);
         listview.setRefreshing(false);
+        if(rlist.size()==0)
+            listview.removeMoreListener();
         this.list.addAll(rlist);
         photoListAdapter.notifyDataSetChanged();
 
