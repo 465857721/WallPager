@@ -1,11 +1,14 @@
 package com.android11.wallpager.pic;
 
 
+import android.app.ActivityOptions;
 import android.app.WallpaperManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
@@ -13,6 +16,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,12 +41,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.android11.wallpager.R.id.iv_top;
+
 
 public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailView {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.iv_top)
+    @Bind(iv_top)
     ImageView ivTop;
     @Bind(R.id.main_abl_app_bar)
     AppBarLayout appBar;
@@ -160,9 +166,22 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 
     }
 
-    @OnClick({R.id.tv_load_photo, R.id.tv_share, R.id.tv_set_phone_page})
+    @OnClick({R.id.iv_top, R.id.tv_load_photo, R.id.tv_share, R.id.tv_set_phone_page})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.iv_top:
+                Intent gobig = new Intent(this, BigPicActivity.class);
+                if (!TextUtils.isEmpty(localUrl)) {
+                    gobig.putExtra("url", localUrl);
+                } else {
+                    gobig.putExtra("url", getIntent().getStringExtra("url"));
+                }
+
+
+                startActivity(gobig);
+                overridePendingTransition(android.R.anim.fade_in,
+                        android.R.anim.fade_out);
+                break;
             case R.id.tv_load_photo:
 
                 dialog = new MaterialDialog.Builder(this)

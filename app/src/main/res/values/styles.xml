@@ -37,4 +37,10 @@
         <!--<item name="android:background">@drawable/ripple</item>-->
         <item name="android:textColor">@color/icon_gray</item>
     </style>
+    <style name="FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

@@ -134,6 +134,7 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
         godetail.putExtra("id", list.get(position).getId());
         godetail.putExtra("color", list.get(position).getColor());
         godetail.putExtra("url", list.get(position).getUrls().getRegular());
+        godetail.putExtra("bigurl", list.get(position).getUrls().getFull());
         godetail.putExtra("headurl", list.get(position).getUser().getProfile_image().getLarge());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
