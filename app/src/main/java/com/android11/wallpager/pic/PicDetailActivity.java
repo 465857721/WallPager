@@ -164,7 +164,16 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_load_photo:
-                downWallPaper();
+
+                dialog = new MaterialDialog.Builder(this)
+                        .content("正在加载请稍等...")
+                        .show();
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        downWallPaper();
+                    }
+                }, 2000);
                 break;
             case R.id.tv_share:
                 Tools.shareMsg(mContext, getString(R.string.app_name),
@@ -217,6 +226,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
             // 在这里执行图片保存方法
             Tools.saveImageToGallery(mContext, bitmap);
         }
+        dialog.dismiss();
 
     }
 
