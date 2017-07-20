@@ -9,8 +9,11 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ProviderInfo;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -26,8 +29,10 @@ import android.widget.Toast;
 import com.android11.wallpager.R;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
@@ -341,7 +346,10 @@ public class Tools {
         if (imgPath == null || imgPath.equals("")) {
             intent.setType("text/plain"); // 纯文本
         } else {
-            File f = new File(imgPath);
+
+            Bitmap bitmap = BitmapFactory.decodeFile(imgPath);
+            Bitmap sharebitmap = createShareBitmap(mContext, bitmap);
+            File f = bitMap2File(sharebitmap);
             if (f != null && f.exists() && f.isFile()) {
                 intent.setType("image/jpg");
                 Uri u = Uri.fromFile(f);
@@ -352,5 +360,69 @@ public class Tools {
         intent.putExtra(Intent.EXTRA_TEXT, msgText);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(Intent.createChooser(intent, activityTitle));
+    }
+
+    public static Bitmap createShareBitmap(Context mContext, Bitmap src) {
+        if (src == null) {
+            return null;
+        }
+        Bitmap watermark = getImageFromAssetsFile(mContext, "qr.png");
+        int w = src.getWidth();
+        int h = src.getHeight();
+        int ww = watermark.getWidth();
+        int wh = watermark.getHeight();
+        Bitmap newb = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);//创建一个新的和SRC长度宽度一样的位图
+        Canvas cv = new Canvas(newb);
+        cv.drawBitmap(src, 0, 0, null);//在 0，0坐标开始画入src
+        cv.drawBitmap(watermark, w - ww - 20, h - wh - 20, null);//在src的右下角画入水印
+        cv.save(Canvas.ALL_SAVE_FLAG);//保存
+        cv.restore();//存储
+        return newb;
+
+    }
+
+    public static Bitmap getImageFromAssetsFile(Context mContext, String fileName) {
+        Bitmap image = null;
+        AssetManager am = mContext.getResources().getAssets();
+        try {
+            InputStream is = am.open(fileName);
+            image = BitmapFactory.decodeStream(is);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
+
+    }
+
+    public static File bitMap2File(Bitmap bitmap) {
+        String path = "";
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
+            path = Environment.getExternalStorageDirectory()
+                    + File.separator + "android11" + File.separator + "share" + File.separator;//保存到sd根目录下
+        }
+
+        File appDir = new File(path);
+        if (!appDir.exists()) {
+            appDir.mkdirs();
+        }
+
+        File f = new File(path, System.currentTimeMillis() + ".jpg");
+        if (f.exists()) {
+            f.delete();
+        }
+        try {
+            FileOutputStream out = new FileOutputStream(f);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            out.flush();
+            out.close();
+            bitmap.recycle();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            return f;
+        }
     }
 }
