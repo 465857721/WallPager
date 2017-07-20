@@ -44,7 +44,7 @@ public class UserPicListActivity extends BaseActivity {
         setSupportActionBar(mToolbar);
         //显示那个箭头
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mToolbar.setTitle(getIntent().getStringExtra("来自 "+"name"));
+        mToolbar.setTitle("来自 "+getIntent().getStringExtra("name"));
         setSupportActionBar(mToolbar);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
