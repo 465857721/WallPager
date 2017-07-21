@@ -40,14 +40,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static com.android11.wallpager.R.id.iv_top;
-
 
 public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailView {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(iv_top)
+    @Bind(R.id.iv_top)
     ImageView ivTop;
     @Bind(R.id.main_abl_app_bar)
     AppBarLayout appBar;
@@ -106,6 +104,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         Glide.with(this).load(getIntent().getStringExtra("url")).centerCrop().into(ivTop);
         Glide.with(this).load(getIntent().getStringExtra("headurl"))
                 .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
+
     }
 
     @Override
@@ -163,8 +162,8 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 //        } else {
 //            Glide.with(this).load(bean.getUrls().getSmall()).centerCrop().into(ivTop);
 //        }
-//        Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge())
-//                .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
+        Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge())
+                .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
         tvName.setText(bean.getUser().getName());
 
 
@@ -270,7 +269,8 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         Bitmap bitmap = BitmapFactory.decodeFile(localUrl);
         if (bitmap != null) {
             // 在这里执行图片保存方法
-            Tools.saveImageToGallery(mContext, bitmap);
+            Tools.saveImageToGallery(mContext, bitmap, bean.getId());
+
         }
         dialog.dismiss();
 

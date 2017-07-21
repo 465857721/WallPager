@@ -295,7 +295,7 @@ public class Tools {
         return null;
     }
 
-    public static void saveImageToGallery(Context context, Bitmap bmp) {
+    public static void saveImageToGallery(Context context, Bitmap bmp, String name) {
         // 首先保存图片
         File currentFile;
         File file = Environment.getExternalStorageDirectory();
@@ -304,9 +304,12 @@ public class Tools {
         if (!appDir.exists()) {
             appDir.mkdirs();
         }
-        String fileName1 = System.currentTimeMillis() + ".jpg";
+        String fileName1 = "downpic_" + name + ".jpg";
         currentFile = new File(appDir, fileName1);
-
+        if (currentFile.exists()) {
+            toastInBottom(context, "已经下载过了，可以再下载中查看~");
+            return;
+        }
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(currentFile);

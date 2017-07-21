@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.android11.wallpager.R;
 import com.android11.wallpager.about.AboutActivity;
+import com.android11.wallpager.download.DownLoadActivity;
 import com.android11.wallpager.home.adapter.HomeFragmentPagerAdapter;
 import com.android11.wallpager.home.fragment.CollectionFragment;
 import com.android11.wallpager.home.fragment.PhotosFragment;
@@ -137,6 +138,10 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id) {
+            case R.id.nav_download:
+                Intent downIntent = new Intent(this, DownLoadActivity.class);
+                startActivity(downIntent);
+                break;
             case R.id.nav_setting:
                 Intent setIntent = new Intent(this, SettingActivity.class);
                 startActivity(setIntent);

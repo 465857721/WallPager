@@ -43,6 +43,7 @@
         <activity android:name=".collection.CollectionActivity"/>
         <activity android:name=".search.SearchActivity"/>
         <activity android:name=".pic.UserPicListActivity"/>
+        <activity android:name=".download.DownLoadActivity"/>
         <activity
             android:name=".pic.BigPicActivity"
             android:theme="@style/FullScreen"/>
