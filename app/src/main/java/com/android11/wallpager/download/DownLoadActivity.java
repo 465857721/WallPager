@@ -8,7 +8,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -32,6 +34,8 @@ public class DownLoadActivity extends BaseActivity implements DownListAdapter.On
     Toolbar mToolbar;
     @Bind(R.id.listview)
     RecyclerView listview;
+    @Bind(R.id.tv_empty)
+    TextView tvEmpty;
 
     private File[] fileList;
     private List<File> list = new ArrayList<>();
@@ -62,6 +66,8 @@ public class DownLoadActivity extends BaseActivity implements DownListAdapter.On
         adapter.setOnItemClickLitener(this);
         adapter.setOndeleteClickLitener(this);
         adapter.setOnDetailClickLitener(this);
+        if (list.size() > 0)
+            tvEmpty.setVisibility(View.GONE);
     }
 
     @Override
@@ -107,8 +113,15 @@ public class DownLoadActivity extends BaseActivity implements DownListAdapter.On
                         File f = list.get(position);
                         if (f.exists())
                             list.get(position).delete();
+
                         list.remove(position);
                         adapter.notifyItemRemoved(position);
+                        adapter.notifyItemRangeChanged(position, list.size() - position);
+//                        adapter.notifyDataSetChanged();
+                        if (list.size() == 0)
+                            tvEmpty.setVisibility(View.VISIBLE);
+                        Log.d("zk position", "" + position);
+                        Log.d("zk list size = ", "" + list.size());
                     }
                 })
                 .show();

@@ -5,11 +5,15 @@
     <!--app:actionViewClass="android.support.v7.widget.SearchView"-->
 
     <item
-        app:showAsAction="always"
         android:id="@+id/search"
         android:icon="@drawable/ic_toolbar_search"
-        android:title="搜索"/>
-
+        android:title="搜索"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/download"
+        android:icon="@drawable/ic_toolbar_download"
+        android:title="下载"
+        app:showAsAction="always"/>
 
 
 </menu>

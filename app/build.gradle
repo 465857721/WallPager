@@ -43,4 +43,5 @@ dependencies {
     compile 'me.xiaopan:sketch:2.4.1'
     compile 'jp.wasabeef:glide-transformations:2.0.2'
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+    compile 'com.liulishuo.filedownloader:library:1.6.2'
 }

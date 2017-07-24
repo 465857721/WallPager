@@ -203,16 +203,18 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
                         android.R.anim.fade_out);
                 break;
             case R.id.tv_load_photo:
-
-                dialog = new MaterialDialog.Builder(this)
-                        .content("正在加载请稍等...")
-                        .show();
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        downWallPaper();
-                    }
-                }, 2000);
+                if(bean==null)
+                    return;
+                Tools.downloadImage(mContext, getIntent().getStringExtra("url"), bean.getId());
+//                dialog = new MaterialDialog.Builder(this)
+//                        .content("正在加载请稍等...")
+//                        .show();
+//                mHandler.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        downWallPaper();
+//                    }
+//                }, 2000);
                 break;
             case R.id.tv_share:
                 Tools.shareMsg(mContext, getString(R.string.app_name),

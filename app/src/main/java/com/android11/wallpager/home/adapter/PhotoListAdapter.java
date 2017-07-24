@@ -59,7 +59,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final OrderViewHolder oholder = (OrderViewHolder) holder;
-        PhotoListBean bean = list.get(position);
+        final PhotoListBean bean = list.get(position);
         oholder.rlItem.setBackgroundColor(Color.parseColor(bean.getColor()));
 
 
@@ -87,6 +87,12 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
                 }
             });
         }
+        oholder.ivdown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Tools.downloadImage(mActivity, bean.getUrls().getRegular(), bean.getId());
+            }
+        });
     }
 
     @Override
@@ -97,6 +103,8 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
     class OrderViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.iv_photo)
         ImageView ivphoto;
+        @Bind(R.id.iv_down)
+        ImageView ivdown;
 
         @Bind(R.id.tv_name)
         TextView tvname;

@@ -7,9 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="240dp"
     android:layout_marginTop="3dp"
+    android:background="@color/icon_gray_hint"
     android:transitionName="ivpic"
-    tools:targetApi="lollipop"
-    android:background="@color/icon_gray_hint">
+    tools:targetApi="lollipop">
 
     <ImageView
         android:id="@+id/iv_photo"
@@ -20,42 +20,65 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical"
+        android:gravity="bottom"
+        android:orientation="horizontal"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:transitionName="headpic"
-            tools:targetApi="lollipop"
-            android:id="@+id/iv_head"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/default_avatar_round"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="1dp"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:transitionName="tvname"
-            tools:targetApi="lollipop"
-            android:id="@+id/tv_name"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/default_avatar_round"
+                android:transitionName="headpic"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="1dp"
+                tools:targetApi="lollipop"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:transitionName="tvname"
+                tools:targetApi="lollipop"
+                tools:text="Gilbert Kane"/>
+
+            <TextView
+                android:id="@+id/tv_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:text="A man drinking a coffee."/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            tools:text="Gilbert Kane"/>
+            android:layout_marginRight="15dp"
+            android:gravity="bottom">
 
-        <TextView
-            android:id="@+id/tv_des"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            tools:text="A man drinking a coffee."/>
+            <ImageView
+                android:id="@+id/iv_down"
+                android:padding="5dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_download_white"/>
+
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

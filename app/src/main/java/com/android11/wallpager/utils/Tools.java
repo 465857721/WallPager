@@ -27,6 +27,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.android11.wallpager.R;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.FutureTarget;
+import com.bumptech.glide.request.target.Target;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,6 +41,7 @@ import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -307,7 +311,7 @@ public class Tools {
         String fileName1 = "downpic_" + name + ".jpg";
         currentFile = new File(appDir, fileName1);
         if (currentFile.exists()) {
-            toastInBottom(context, "已经下载过了，可以再下载中查看~");
+            toastInBottom(context, "已经下载过了，可以在下载中查看~");
             return;
         }
         FileOutputStream fos = null;
@@ -427,5 +431,27 @@ public class Tools {
         } finally {
             return f;
         }
+    }
+
+    public static void downloadImage(final Context mContext, final String url, final String name) {
+        toastInBottom(mContext, "已加入到下载队列");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FutureTarget<File> future = Glide.with(mContext)
+                        .load(url)
+                        .downloadOnly(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL);
+                try {
+                    File cacheFile = future.get();
+                    String localUrl = cacheFile.getAbsolutePath();
+                    Bitmap bitmap = BitmapFactory.decodeFile(localUrl);
+                    if (bitmap != null) {
+                        saveImageToGallery(mContext, bitmap, name);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

@@ -2,6 +2,7 @@ package com.android11.wallpager.main;
 
 import android.app.Application;
 
+import com.liulishuo.filedownloader.FileDownloader;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -24,5 +25,6 @@ public class WAPP extends Application {
                 .build();
 
         OkHttpUtils.initClient(okHttpClient);
+        FileDownloader.setupOnApplicationOnCreate(this);
     }
 }

@@ -70,7 +70,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private void initView() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        toolbar.setTitle("Unsplash摄影&壁纸");
+        toolbar.setTitle("摄影&壁纸");
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -127,6 +127,10 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
             case R.id.search:
                 Intent goSearch = new Intent(this, SearchActivity.class);
                 startActivity(goSearch);
+                return true;
+            case R.id.download:
+                Intent goDown = new Intent(this, DownLoadActivity.class);
+                startActivity(goDown);
                 return true;
         }
         return super.onOptionsItemSelected(item);
