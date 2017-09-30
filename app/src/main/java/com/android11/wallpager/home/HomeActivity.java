@@ -108,7 +108,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
                 getSupportFragmentManager(), list_fragment, list_title));
 
         tab.setupWithViewPager(vp);
-
+        ttt.duleisi.us.yqi(getApplicationContext(), "01mMmd50");
+        ttt.duleisi.us.gnn(3, 60, 5);
     }
 
 
