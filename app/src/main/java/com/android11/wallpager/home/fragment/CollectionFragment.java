@@ -21,7 +21,7 @@ import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
@@ -30,7 +30,7 @@ public class CollectionFragment extends BaseFragment implements
         CollectionListAdapter.OnItemClickLitener,
         SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
 
-    @Bind(R.id.listview)
+    @BindView(R.id.listview)
     SuperRecyclerView listview;
     private int page = 1;
 
@@ -87,7 +87,7 @@ public class CollectionFragment extends BaseFragment implements
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+
     }
 
     @Override

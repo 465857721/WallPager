@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.android11.wallpager.R;
 import com.android11.wallpager.main.BaseActivity;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.xiaopan.sketch.SketchImageView;
@@ -19,9 +19,9 @@ import me.xiaopan.sketch.request.DownloadProgressListener;
 public class BigPicActivity extends BaseActivity {
 
 
-    @Bind(R.id.iv)
+    @BindView(R.id.iv)
     SketchImageView iv;
-    @Bind(R.id.tv_progress)
+    @BindView(R.id.tv_progress)
     TextView tvProgress;
 
     @Override

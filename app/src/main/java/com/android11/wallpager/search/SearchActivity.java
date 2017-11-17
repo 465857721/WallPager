@@ -22,8 +22,6 @@ import android.widget.TextView;
 import com.android11.wallpager.R;
 import com.android11.wallpager.home.adapter.PhotoListAdapter;
 import com.android11.wallpager.home.bean.PhotoListBean;
-import com.android11.wallpager.home.iviews.IGetPhotosView;
-import com.android11.wallpager.home.presenter.GetPhotosPresenter;
 import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.pic.PicDetailActivity;
 import com.android11.wallpager.search.bean.SearchResultBean;
@@ -38,17 +36,17 @@ import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class SearchActivity extends BaseActivity implements TextView.OnEditorActionListener, ISearchPhotosView, PhotoListAdapter.OnItemClickLitener, SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.et_keyword)
+    @BindView(R.id.et_keyword)
     EditText etKeyword;
-    @Bind(R.id.listview)
+    @BindView(R.id.listview)
     SuperRecyclerView listview;
     private int page = 1;
     private SearchPhotosPresenter getPhotosPresenter;
@@ -95,7 +93,7 @@ public class SearchActivity extends BaseActivity implements TextView.OnEditorAct
             case R.id.clear:
                 etKeyword.setText("");
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(etKeyword,InputMethodManager.SHOW_FORCED);
+                imm.showSoftInput(etKeyword, InputMethodManager.SHOW_FORCED);
                 return true;
         }
         return super.onOptionsItemSelected(item);

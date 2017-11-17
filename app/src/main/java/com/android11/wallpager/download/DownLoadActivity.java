@@ -24,17 +24,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class DownLoadActivity extends BaseActivity implements DownListAdapter.OnDetailClickLitener, DownListAdapter.OndeleteClickLitener, DownListAdapter.OnItemClickLitener {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.listview)
+    @BindView(R.id.listview)
     RecyclerView listview;
-    @Bind(R.id.tv_empty)
+    @BindView(R.id.tv_empty)
     TextView tvEmpty;
 
     private File[] fileList;

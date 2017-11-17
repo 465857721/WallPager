@@ -10,15 +10,15 @@ import android.widget.CompoundButton;
 import com.android11.wallpager.R;
 import com.android11.wallpager.main.BaseActivity;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class SettingActivity extends BaseActivity {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.sw_highqulit)
+    @BindView(R.id.sw_highqulit)
     CheckBox swHighqulit;
 
 

@@ -25,12 +25,12 @@ import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnItemClickLitener, IGetPhotosView, SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
-    @Bind(R.id.listview)
+    @BindView(R.id.listview)
     SuperRecyclerView listview;
     private int page = 1;
     private GetPhotosPresenter getPhotosPresenter;
@@ -94,7 +94,7 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
 
         listview.setLoadingMore(false);
         listview.setRefreshing(false);
-        if(rlist.size()==0)
+        if (rlist.size() == 0)
             listview.removeMoreListener();
         this.list.addAll(rlist);
         photoListAdapter.notifyDataSetChanged();
@@ -104,7 +104,6 @@ public class PhotosFragment extends BaseFragment implements PhotoListAdapter.OnI
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 
     @Override

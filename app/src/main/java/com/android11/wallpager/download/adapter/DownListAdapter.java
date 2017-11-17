@@ -10,11 +10,12 @@ import android.widget.TextView;
 
 import com.android11.wallpager.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
@@ -78,7 +79,7 @@ public class DownListAdapter extends RecyclerView.Adapter {
         final OrderViewHolder oholder = (OrderViewHolder) holder;
         File bean = list.get(position);
         Glide.with(mActivity).load(bean.getAbsoluteFile())
-                .centerCrop().into(oholder.ivphoto);
+                .apply(new RequestOptions().centerCrop()).into(oholder.ivphoto);
         oholder.tvName.setText(bean.getName().replace("downpic_", "").replace(".jpg", ""));
         if (mOnItemClickLitener != null) {
             oholder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -112,13 +113,13 @@ public class DownListAdapter extends RecyclerView.Adapter {
     }
 
     class OrderViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.iv_search)
+        @BindView(R.id.iv_search)
         ImageView ivSearch;
-        @Bind(R.id.iv_photo)
+        @BindView(R.id.iv_photo)
         ImageView ivphoto;
-        @Bind(R.id.iv_delete)
+        @BindView(R.id.iv_delete)
         ImageView ivDelete;
-        @Bind(R.id.tv_name)
+        @BindView(R.id.tv_name)
         TextView tvName;
 
         public OrderViewHolder(View view) {

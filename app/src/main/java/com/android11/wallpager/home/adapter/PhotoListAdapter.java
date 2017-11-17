@@ -17,10 +17,11 @@ import com.android11.wallpager.utils.SharePreferenceUtil;
 import com.android11.wallpager.utils.Tools;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -66,11 +67,11 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
         SharePreferenceUtil spu = Tools.getSpu(mActivity);
         // 是否高清模式
         if (spu.getHighQulit()) {
-            Glide.with(mActivity).load(bean.getUrls().getRegular()).thumbnail(0.1f).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
+            Glide.with(mActivity).load(bean.getUrls().getRegular()).apply(new RequestOptions().centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)).into(oholder.ivphoto);
         } else {
-            Glide.with(mActivity).load(bean.getUrls().getSmall()).thumbnail(0.1f).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
+            Glide.with(mActivity).load(bean.getUrls().getSmall()).thumbnail(0.1f).apply(new RequestOptions().centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)).into(oholder.ivphoto);
         }
-        Glide.with(mActivity).load(bean.getUser().getProfile_image().getLarge()).centerCrop().dontAnimate().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivHead);
+        Glide.with(mActivity).load(bean.getUser().getProfile_image().getLarge()).apply(new RequestOptions().centerCrop().dontAnimate().diskCacheStrategy(DiskCacheStrategy.ALL)).into(oholder.ivHead);
 
         oholder.tvname.setText(bean.getUser().getName());
         if (TextUtils.isEmpty(bean.getDescription())) {
@@ -101,18 +102,18 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
     }
 
     class OrderViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.iv_photo)
+        @BindView(R.id.iv_photo)
         ImageView ivphoto;
-        @Bind(R.id.iv_down)
+        @BindView(R.id.iv_down)
         ImageView ivdown;
 
-        @Bind(R.id.tv_name)
+        @BindView(R.id.tv_name)
         TextView tvname;
-        @Bind(R.id.tv_des)
+        @BindView(R.id.tv_des)
         TextView tvdes;
-        @Bind(R.id.rl_item)
+        @BindView(R.id.rl_item)
         RelativeLayout rlItem;
-        @Bind(R.id.iv_head)
+        @BindView(R.id.iv_head)
         CircleImageView ivHead;
 
         public OrderViewHolder(View view) {

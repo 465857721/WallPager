@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.android11.wallpager.R;
 import com.android11.wallpager.main.BaseActivity;
+import com.bumptech.glide.Glide;
 import com.qq.e.ads.splash.SplashAD;
 import com.qq.e.ads.splash.SplashADListener;
 import com.qq.e.comm.util.AdError;

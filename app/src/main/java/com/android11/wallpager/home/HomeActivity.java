@@ -25,21 +25,20 @@ import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.search.SearchActivity;
 import com.android11.wallpager.setting.SettingActivity;
 import com.android11.wallpager.utils.Const;
-import com.android11.wallpager.utils.OrderType;
 import com.android11.wallpager.utils.Tools;
 import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    @Bind(R.id.tab)
+    @BindView(R.id.tab)
     TabLayout tab;
-    @Bind(R.id.vp)
+    @BindView(R.id.vp)
     ViewPager vp;
     private ArrayList<String> list_title;
     private List<Fragment> list_fragment = new ArrayList<>();
@@ -109,7 +108,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         vp.setOffscreenPageLimit(3);
         tab.setupWithViewPager(vp);
     }
-
 
 
     @Override

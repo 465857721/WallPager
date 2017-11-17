@@ -12,13 +12,13 @@ import com.android11.wallpager.home.fragment.PhotosFragment;
 import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.utils.Const;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class UserPicListActivity extends BaseActivity {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
 

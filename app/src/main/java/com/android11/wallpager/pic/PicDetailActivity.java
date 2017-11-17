@@ -29,13 +29,21 @@ import com.android11.wallpager.pic.presenter.GetPhotoDetailPresenter;
 import com.android11.wallpager.utils.Tools;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.FutureTarget;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.jaeger.library.StatusBarUtil;
+import com.scwang.smartrefresh.layout.api.RefreshFooter;
+import com.scwang.smartrefresh.layout.api.RefreshHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.RefreshState;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnMultiPurposeListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.io.File;
 import java.util.concurrent.ExecutionException;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -43,42 +51,46 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailView {
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.iv_top)
+    @BindView(R.id.iv_top)
     ImageView ivTop;
-    @Bind(R.id.main_abl_app_bar)
+    @BindView(R.id.main_abl_app_bar)
     AppBarLayout appBar;
-    @Bind(R.id.iv_head)
+    @BindView(R.id.iv_head)
     CircleImageView ivHead;
-    @Bind(R.id.tv_name)
+    @BindView(R.id.tv_name)
     TextView tvName;
-    @Bind(R.id.tv_load_photo)
+    @BindView(R.id.tv_load_photo)
     TextView tvLoadPhoto;
-    @Bind(R.id.tv_share)
+    @BindView(R.id.tv_share)
     TextView tvShare;
-    @Bind(R.id.tv_set_phone_page)
+    @BindView(R.id.tv_set_phone_page)
     TextView tvSetPhonePage;
-    @Bind(R.id.tv_time)
+    @BindView(R.id.tv_time)
     TextView tvTime;
-    @Bind(R.id.tv_attr_size)
+    @BindView(R.id.tv_attr_size)
     TextView tvAttrSize;
-    @Bind(R.id.tv_attr_exposure)
+    @BindView(R.id.tv_attr_exposure)
     TextView tvAttrExposure;
-    @Bind(R.id.tv_attr_aperture)
+    @BindView(R.id.tv_attr_aperture)
     TextView tvAttrAperture;
-    @Bind(R.id.tv_attr_focal)
+    @BindView(R.id.tv_attr_focal)
     TextView tvAttrFocal;
-    @Bind(R.id.tv_attr_model)
+    @BindView(R.id.tv_attr_model)
     TextView tvAttrModel;
-    @Bind(R.id.tv_attr_iso)
+    @BindView(R.id.tv_attr_iso)
     TextView tvAttrIso;
-    @Bind(R.id.divide)
+    @BindView(R.id.divide)
     View divide;
-    @Bind(R.id.tv_attr_loaction)
+    @BindView(R.id.tv_attr_loaction)
     TextView tvAttrLoaction;
-    @Bind(R.id.ctl_top)
+    @BindView(R.id.ctl_top)
     CollapsingToolbarLayout ctlTop;
+    @BindView(R.id.tvheader)
+    TextView tvheader;
+    @BindView(R.id.tvfooter)
+    TextView tvfooter;
 
     private GetPhotoDetailPresenter getPhotoDetailPresenter;
     private PicDetailBean bean;
@@ -101,11 +113,92 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         getLocalURrl();
         if (!TextUtils.isEmpty(getIntent().getStringExtra("color")))
             ctlTop.setBackgroundColor(Color.parseColor(getIntent().getStringExtra("color")));
-        Glide.with(this).load(getIntent().getStringExtra("url")).centerCrop().into(ivTop);
+        Glide.with(this).load(getIntent().getStringExtra("url")).apply(new RequestOptions().centerCrop()).into(ivTop);
         Glide.with(this).load(getIntent().getStringExtra("headurl"))
-                .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
+                .apply(new RequestOptions().placeholder(R.drawable.default_avatar_round).dontAnimate()).into(ivHead);
+        RefreshLayout refreshLayout = (RefreshLayout) findViewById(R.id.refreshLayout);
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                onBackPressed();
+            }
+        });
+        refreshLayout.setEnableAutoLoadmore(false);
+        refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                onBackPressed();
+            }
+        });
+        refreshLayout.setOnMultiPurposeListener(new OnMultiPurposeListener() {
+            @Override
+            public void onHeaderPulling(RefreshHeader header, float percent, int offset, int headerHeight, int extendHeight) {
 
+            }
+
+            @Override
+            public void onHeaderReleasing(RefreshHeader header, float percent, int offset, int headerHeight, int extendHeight) {
+
+            }
+
+            @Override
+            public void onHeaderStartAnimator(RefreshHeader header, int headerHeight, int extendHeight) {
+
+            }
+
+            @Override
+            public void onHeaderFinish(RefreshHeader header, boolean success) {
+
+            }
+
+            @Override
+            public void onFooterPulling(RefreshFooter footer, float percent, int offset, int footerHeight, int extendHeight) {
+
+            }
+
+            @Override
+            public void onFooterReleasing(RefreshFooter footer, float percent, int offset, int footerHeight, int extendHeight) {
+
+            }
+
+            @Override
+            public void onFooterStartAnimator(RefreshFooter footer, int footerHeight, int extendHeight) {
+
+            }
+
+            @Override
+            public void onFooterFinish(RefreshFooter footer, boolean success) {
+
+            }
+
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+
+            }
+
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+
+            }
+
+            @Override
+            public void onStateChanged(RefreshLayout refreshLayout, RefreshState oldState, RefreshState newState) {
+                if (newState == RefreshState.PullDownToRefresh) {
+                    tvheader.setText("下拉关闭页面");
+                }
+                if (newState == RefreshState.ReleaseToRefresh) {
+                    tvheader.setText("松开关闭页面");
+                }
+                if (newState == RefreshState.PullToUpLoad) {
+                    tvfooter.setText("上拉关闭页面");
+                }
+                if (newState == RefreshState.ReleaseToLoad) {
+                    tvfooter.setText("松开关闭页面");
+                }
+            }
+        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -163,7 +256,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 //            Glide.with(this).load(bean.getUrls().getSmall()).centerCrop().into(ivTop);
 //        }
         Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge())
-                .placeholder(R.drawable.default_avatar_round).dontAnimate().into(ivHead);
+                .apply(new RequestOptions().placeholder(R.drawable.default_avatar_round).dontAnimate()).into(ivHead);
         tvName.setText(bean.getUser().getName());
 
 
@@ -203,7 +296,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
                         android.R.anim.fade_out);
                 break;
             case R.id.tv_load_photo:
-                if(bean==null)
+                if (bean == null)
                     return;
                 Tools.downloadImage(mContext, getIntent().getStringExtra("url"), bean.getId());
 //                dialog = new MaterialDialog.Builder(this)

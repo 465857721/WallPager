@@ -13,15 +13,15 @@ import android.widget.TextView;
 
 import com.android11.wallpager.R;
 import com.android11.wallpager.home.bean.CollectionBean;
-import com.android11.wallpager.home.bean.PhotoListBean;
 import com.android11.wallpager.utils.SharePreferenceUtil;
 import com.android11.wallpager.utils.Tools;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
@@ -66,13 +66,13 @@ public class CollectionListAdapter extends RecyclerView.Adapter {
         SharePreferenceUtil spu = Tools.getSpu(mActivity);
         // 是否高清模式
         if (spu.getHighQulit()) {
-            Glide.with(mActivity).load(bean.getCover_photo().getUrls().getRegular()).thumbnail(0.1f).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
+            Glide.with(mActivity).load(bean.getCover_photo().getUrls().getRegular()).thumbnail(0.1f).apply(new RequestOptions().centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)).into(oholder.ivphoto);
         } else {
-            Glide.with(mActivity).load(bean.getCover_photo().getUrls().getSmall()) .thumbnail(0.1f).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(oholder.ivphoto);
+            Glide.with(mActivity).load(bean.getCover_photo().getUrls().getSmall()).thumbnail(0.1f).apply(new RequestOptions().centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)).into(oholder.ivphoto);
         }
 
         oholder.tvname.setText(bean.getUser().getName());
-        oholder.tvpicnum.setText(bean.getTotal_photos()+"照片");
+        oholder.tvpicnum.setText(bean.getTotal_photos() + "照片");
         oholder.tvtitle.setText(bean.getTitle());
         if (TextUtils.isEmpty(bean.getDescription())) {
             oholder.tvdes.setVisibility(View.GONE);
@@ -96,18 +96,18 @@ public class CollectionListAdapter extends RecyclerView.Adapter {
     }
 
     class OrderViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.iv_photo)
+        @BindView(R.id.iv_photo)
         ImageView ivphoto;
 
-        @Bind(R.id.tv_name)
+        @BindView(R.id.tv_name)
         TextView tvname;
-        @Bind(R.id.tv_des)
+        @BindView(R.id.tv_des)
         TextView tvdes;
-        @Bind(R.id.rl_item)
+        @BindView(R.id.rl_item)
         RelativeLayout rlItem;
-        @Bind(R.id.tv_picnum)
+        @BindView(R.id.tv_picnum)
         TextView tvpicnum;
-        @Bind(R.id.tv_title)
+        @BindView(R.id.tv_title)
         TextView tvtitle;
 
 
