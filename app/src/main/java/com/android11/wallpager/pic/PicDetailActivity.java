@@ -18,10 +18,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android11.wallpager.R;
+import com.android11.wallpager.home.adapter.PhotoListAdapter;
 import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.pic.bean.PicDetailBean;
 import com.android11.wallpager.pic.iviews.IGetPhotoDetailView;
@@ -113,10 +115,17 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         getLocalURrl();
         if (!TextUtils.isEmpty(getIntent().getStringExtra("color")))
             ctlTop.setBackgroundColor(Color.parseColor(getIntent().getStringExtra("color")));
-        Glide.with(this).load(getIntent().getStringExtra("url")).apply(new RequestOptions().centerCrop()).into(ivTop);
-        Glide.with(this).load(getIntent().getStringExtra("headurl"))
-                .apply(new RequestOptions().placeholder(R.drawable.default_avatar_round).dontAnimate()).into(ivHead);
-        RefreshLayout refreshLayout = (RefreshLayout) findViewById(R.id.refreshLayout);
+        Glide.with(this)
+                .load(getIntent()
+                        .getStringExtra("url"))
+                .apply(new RequestOptions().centerCrop())
+                .into(ivTop);
+        Glide.with(this)
+                .load(getIntent().getStringExtra("headurl"))
+                .apply(new RequestOptions().placeholder(R.drawable.default_avatar_round)
+                        .dontAnimate())
+                .into(ivHead);
+        RefreshLayout refreshLayout = findViewById(R.id.refreshLayout);
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -238,6 +247,13 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
             }
         });
 
+        int sw = Tools.getScreenW(this);
+        Double rate = getIntent().getIntExtra("h", 1000) * 1.0 / getIntent().getIntExtra("w", 600);
+        int h = (int) (sw * rate);
+        CollapsingToolbarLayout.LayoutParams params = (CollapsingToolbarLayout.LayoutParams) ivTop.getLayoutParams();
+        params.height = h;
+        ivTop.setLayoutParams(params);
+
     }
 
 
@@ -255,6 +271,17 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 //        } else {
 //            Glide.with(this).load(bean.getUrls().getSmall()).centerCrop().into(ivTop);
 //        }
+        if (getIntent().getIntExtra("h", -1) == -1) {
+            int sw = Tools.getScreenW(this);
+            Double rate = getIntent().getIntExtra("h", 1000) * 1.0 / getIntent().getIntExtra("w", 600);
+            int h = (int) (sw * rate);
+            CollapsingToolbarLayout.LayoutParams params = (CollapsingToolbarLayout.LayoutParams) ivTop.getLayoutParams();
+            params.height = h;
+            ivTop.setLayoutParams(params);
+        }
+
+
+
         Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge())
                 .apply(new RequestOptions().placeholder(R.drawable.default_avatar_round).dontAnimate()).into(ivHead);
         tvName.setText(bean.getUser().getName());

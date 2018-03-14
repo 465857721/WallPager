@@ -133,6 +133,8 @@ public class DownLoadActivity extends BaseActivity implements DownListAdapter.On
         godetail.putExtra("id", list.get(position).getName()
                 .replace("downpic_", "").replace(".jpg", ""));
         godetail.putExtra("url", list.get(position).getAbsolutePath());
+//        godetail.putExtra("w", list.get(position).g);
+//        godetail.putExtra("h", list.get(position).getHeight());
         startActivity(godetail);
 
     }

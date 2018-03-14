@@ -41,7 +41,6 @@ import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -205,11 +204,9 @@ public class Tools {
         return (int) (pxValue / scale + 0.5f);
     }
 
-    public static int getScreenW(Activity mActivity) {
-        DisplayMetrics mDisplayMetrics = new DisplayMetrics();
-        mActivity.getWindowManager().getDefaultDisplay().getMetrics(mDisplayMetrics);
-
-        return mDisplayMetrics.widthPixels;
+    public static int getScreenW(Context mContext) {
+        DisplayMetrics dm = mContext.getApplicationContext().getResources().getDisplayMetrics();
+        return dm.widthPixels;
     }
 
 

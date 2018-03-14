@@ -189,7 +189,8 @@ public class SearchActivity extends BaseActivity implements TextView.OnEditorAct
         godetail.putExtra("color", list.get(position).getColor());
         godetail.putExtra("url", list.get(position).getUrls().getRegular());
         godetail.putExtra("headurl", list.get(position).getUser().getProfile_image().getLarge());
-
+        godetail.putExtra("w", list.get(position).getWidth());
+        godetail.putExtra("h", list.get(position).getHeight());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startActivity(godetail,
                     ActivityOptions

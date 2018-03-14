@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -61,16 +62,41 @@ public class PhotoListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final OrderViewHolder oholder = (OrderViewHolder) holder;
         final PhotoListBean bean = list.get(position);
+
+        int sw = Tools.getScreenW(mActivity);
+        Double rate = bean.getHeight() * 1.0 / bean.getWidth();
+        int h = (int) (sw * rate);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) ((OrderViewHolder) holder).ivphoto.getLayoutParams();
+        params.height = h;
+        ((OrderViewHolder) holder).ivphoto.setLayoutParams(params);
+
+
         oholder.rlItem.setBackgroundColor(Color.parseColor(bean.getColor()));
 
 
         SharePreferenceUtil spu = Tools.getSpu(mActivity);
         // 是否高清模式
+
+
         if (spu.getHighQulit()) {
-            Glide.with(mActivity).load(bean.getUrls().getRegular()).apply(new RequestOptions().centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)).into(oholder.ivphoto);
+            Glide.with(mActivity)
+                    .load(bean.getUrls().getRegular())
+                    .apply(new RequestOptions()
+                            .override(sw, h)
+                            .centerCrop()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL))
+                    .into(oholder.ivphoto);
         } else {
-            Glide.with(mActivity).load(bean.getUrls().getSmall()).thumbnail(0.1f).apply(new RequestOptions().centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL)).into(oholder.ivphoto);
+            Glide.with(mActivity)
+                    .load(bean.getUrls().getSmall())
+                    .thumbnail(0.1f)
+                    .apply(new RequestOptions()
+                            .override(sw, h)
+                            .centerCrop()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL))
+                    .into(oholder.ivphoto);
         }
+
         Glide.with(mActivity).load(bean.getUser().getProfile_image().getLarge()).apply(new RequestOptions().centerCrop().dontAnimate().diskCacheStrategy(DiskCacheStrategy.ALL)).into(oholder.ivHead);
 
         oholder.tvname.setText(bean.getUser().getName());
