@@ -38,7 +38,7 @@ import com.scwang.smartrefresh.layout.api.RefreshFooter;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnMultiPurposeListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
@@ -132,16 +132,27 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
                 onBackPressed();
             }
         });
-        refreshLayout.setEnableAutoLoadmore(false);
-        refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+        refreshLayout.setEnableAutoLoadMore(false);
+
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
+            public void onLoadMore(RefreshLayout refreshLayout) {
                 onBackPressed();
             }
         });
         refreshLayout.setOnMultiPurposeListener(new OnMultiPurposeListener() {
             @Override
+            public void onLoadMore(RefreshLayout refreshLayout) {
+
+            }
+
+            @Override
             public void onHeaderPulling(RefreshHeader header, float percent, int offset, int headerHeight, int extendHeight) {
+
+            }
+
+            @Override
+            public void onHeaderReleased(RefreshHeader header, int headerHeight, int extendHeight) {
 
             }
 
@@ -166,6 +177,11 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
             }
 
             @Override
+            public void onFooterReleased(RefreshFooter footer, int footerHeight, int extendHeight) {
+
+            }
+
+            @Override
             public void onFooterReleasing(RefreshFooter footer, float percent, int offset, int footerHeight, int extendHeight) {
 
             }
@@ -180,10 +196,6 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
 
             }
 
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-
-            }
 
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
@@ -198,7 +210,7 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
                 if (newState == RefreshState.ReleaseToRefresh) {
                     tvheader.setText("松开关闭页面");
                 }
-                if (newState == RefreshState.PullToUpLoad) {
+                if (newState == RefreshState.PullUpToLoad) {
                     tvfooter.setText("上拉关闭页面");
                 }
                 if (newState == RefreshState.ReleaseToLoad) {
