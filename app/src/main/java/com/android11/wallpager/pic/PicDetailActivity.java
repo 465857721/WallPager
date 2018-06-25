@@ -7,23 +7,25 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.android11.wallpager.R;
-import com.android11.wallpager.home.adapter.PhotoListAdapter;
 import com.android11.wallpager.main.BaseActivity;
 import com.android11.wallpager.pic.bean.PicDetailBean;
 import com.android11.wallpager.pic.iviews.IGetPhotoDetailView;
@@ -41,6 +43,7 @@ import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnMultiPurposeListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
 import java.util.concurrent.ExecutionException;
@@ -293,7 +296,6 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
         }
 
 
-
         Glide.with(this.getApplicationContext()).load(bean.getUser().getProfile_image().getLarge())
                 .apply(new RequestOptions().placeholder(R.drawable.default_avatar_round).dontAnimate()).into(ivHead);
         tvName.setText(bean.getUser().getName());
@@ -353,15 +355,30 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
                         "发现美图", bean.getUser().getName(), localUrl);
                 break;
             case R.id.tv_set_phone_page:
-                dialog = new MaterialDialog.Builder(this)
-                        .content("正在设置壁纸请稍等...")
-                        .show();
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        setWallPaper();
-                    }
-                }, 2000);
+                String pt = Environment.getExternalStorageDirectory().getPath() + "/android11/download/crop/";
+                File des = new File(pt);
+                if (!des.exists()) {
+                    des.mkdirs();
+                }
+                Uri destinationUri = Uri.fromFile(new File(pt + System.currentTimeMillis() + ".jpg"));
+                Uri uri_crop = Uri.fromFile(new File(localUrl));
+                UCrop.Options options = new UCrop.Options();
+                options.setHideBottomControls(true);
+                //设置toolbar颜色
+                options.setToolbarColor(ContextCompat.getColor(mContext, R.color.black));
+                //设置状态栏颜色
+                options.setStatusBarColor(ContextCompat.getColor(mContext, R.color.black));
+                Display display = getWindowManager().getDefaultDisplay();
+                System.out.println("width-display :" + display.getWidth());
+                System.out.println("heigth-display :" + display.getHeight());
+
+                UCrop.of(uri_crop, destinationUri)
+                        .withOptions(options)
+                        .withAspectRatio(display.getWidth(), display.getHeight())
+//                            .withMaxResultSize(maxWidth, maxHeight)
+                        .start(this);
+
+
                 break;
             case R.id.iv_head:
                 if (bean == null)
@@ -374,6 +391,26 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
+            final Uri resultUri = UCrop.getOutput(data);
+            final String path = resultUri.getPath();
+
+            dialog = new MaterialDialog.Builder(this)
+                    .content("正在设置壁纸请稍等...")
+                    .show();
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    setWallPaper(path);
+                }
+            }, 2000);
+        } else if (resultCode == UCrop.RESULT_ERROR) {
+            final Throwable cropError = UCrop.getError(data);
+        }
+    }
+
+    @Override
     protected void setStatusBar() {
 //        super.setStatusBar();
 //        StatusBarUtil.setTranslucentForImageView(this, 255, ivTop);
@@ -381,11 +418,9 @@ public class PicDetailActivity extends BaseActivity implements IGetPhotoDetailVi
     }
 
     //设置壁纸
-    public void setWallPaper() {
-
-
+    public void setWallPaper(String path) {
         try {
-            Bitmap bitmap = BitmapFactory.decodeFile(localUrl);
+            Bitmap bitmap = BitmapFactory.decodeFile(path);
             WallpaperManager mWallManager = WallpaperManager.getInstance(this);
             mWallManager.setBitmap(bitmap);
             Tools.toastInBottom(this, "设置成功");

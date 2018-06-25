@@ -7,8 +7,8 @@ android {
         applicationId "com.android11.wallpager"
         minSdkVersion 14
         targetSdkVersion 19
-        versionCode 210
-        versionName "2.1.0"
+        versionCode 220
+        versionName "2.2.0"
     }
     buildTypes {
         release {
@@ -52,5 +52,5 @@ dependencies {
     implementation 'com.liulishuo.filedownloader:library:1.6.2'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4'//没有使用特殊Header，可以不加这行
-
+    implementation 'com.github.yalantis:ucrop:2.2.2'
 }

@@ -63,7 +63,10 @@
         <activity
             android:name="com.qq.e.ads.ADActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
-
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
     </application>
 
